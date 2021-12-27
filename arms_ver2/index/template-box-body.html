@@ -1,0 +1,734 @@
+<style>
+    .widget-user .widget-user-header {
+        padding: 20px;
+        height: 310px;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+
+    @media(min-width: 767px) {
+        .widget-user .widget-user-username {
+            margin-top: 50px;
+            margin-left: 50px;
+            margin-bottom: 5px;
+            font-size: 25px;
+            font-weight: 300;
+            text-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+        }
+    }
+    @media(max-width: 767px) {
+        .widget-user .widget-user-username {
+            margin-top: 50px;
+            margin-left: 0px;
+            margin-bottom: 5px;
+            font-size: 25px;
+            font-weight: 300;
+            text-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+        }
+    }
+
+    @media(min-width: 767px) {
+        .widget-user .widget-user-desc {
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+    }
+    @media(max-width: 767px) {
+        .widget-user .widget-user-desc {
+            margin-top: 10px;
+            margin-left: 0px;
+        }
+    }
+
+
+    @media(max-width: 767px) {
+        .widget-user .widget-user-image > img {
+            width: 100px;
+            height: auto;
+            border: 3px solid #fff;
+        }
+
+        .widget-user .widget-user-image {
+            position: absolute;
+            top: 260px;
+            left: 50%;
+            margin-left: -45px;
+        }
+    }
+    @media(min-width: 767px) {
+        .widget-user .widget-user-image > img {
+            width: 150px;
+            height: auto;
+            border: 3px solid #fff;
+        }
+
+        .widget-user .widget-user-image {
+            position: absolute;
+            top: 90px;
+            left: 83%;
+            margin-left: -45px;
+        }
+    }
+    @media (min-width: 991px) {
+        .widget-user .widget-user-image > img {
+            width: 250px;
+            height: auto;
+            border: 3px solid #fff;
+        }
+
+        .widget-user .widget-user-image {
+            position: absolute;
+            top: 50px;
+            left: 70%;
+            margin-left: -45px;
+        }
+    }
+
+
+/* ´õÁ¶ÀºÃë¾÷Áö¿ø¼¾ÅÍ */
+.jobcontents{width:100%;}
+.jobcontents .pt {margin-top:40px;text-align:center; }
+.jobcontents .pt span{display:inline-block; padding:2px; color:#696461; background:#f9f9f9;}
+.jobcontents span b{color:#f1592a;margin-right:6px;}
+.jobcontents > div{
+	margin:auto;
+}
+.jobcontents > div.infos{text-align:center;}
+.jobcontents > div.infos > span{
+	display:block;
+	color:#333;margin-bottom:55px;
+}
+.jobcontents > div.jobst{
+	width:100%;
+	background:#f4f4f4;
+	padding:55px 0;
+	margin-bottom:40px;
+}
+.jobcontents > div.jobst > strong{
+	display:block;
+	font-size:22px;
+	color:#111;
+	margin-bottom:40px;
+	font-weight:500;
+	text-align:center;
+}
+.jobcontents > div.jobst .jobtlist{
+	margin:auto;
+}
+.jobcontents > div.jobst .jobtlist li{
+	float:left;
+	width:380px;
+	background:#fff;
+	padding:7px;
+	border:1px solid #e1e0df;
+	border-bottom:2px solid #dacabd;
+
+	margin-bottom:20px;
+}
+.jobcontents > div.jobst .jobtlist li:nth-child(3n+2){
+	margin:0 20px;
+}
+.jobcontents div > p{
+	display:block;
+	font-size:22px;
+	color:#484644;
+	text-align:center;
+	margin:60px 0 40px;
+}
+.jobcontents div > p b{
+	font-weight:500;
+}
+.jobcontents div > p span{
+	display:block;
+	font-size:14px;
+	color:#484644;
+	text-align:center;
+	margin-top:5px;
+}
+.jobcontents > div.jobst .jobtlist li dt{
+	float:left;
+	width:132px;height:141px;
+}
+.jobcontents > div.jobst .jobtlist li dt img{width:115px;height:141px;}
+.jobcontents > div.jobst .jobtlist li dd{
+	float:right;
+	width:232px;
+}
+.jobcontents > div.jobst .jobtlist li dd strong{
+	display:block;
+	width:100%;
+	padding:15px 0;
+	font-weight:400;
+	font-size:13px;
+	color:#333;
+	border-bottom:1px solid #d0d0d0;
+
+	margin-bottom:10px;
+}
+.jobcontents > div.jobst .jobtlist li dd strong span{display:block;font-size:14px;}
+.jobcontents > div.jobst .jobtlist li dd strong span.jobsname{
+	display:inline-block;
+	font-weight:none;
+	font-size:12px;
+	color:#888;
+	padding-left:5px;
+}
+.jobcontents > div.jobst .jobtlist li dd em a{
+	display:block;
+	font-size:13px;
+	color:#333;
+	line-height:1.5;
+	padding-left:21px;
+	position:relative;
+	font-family: 'Open Sans', sans-serif;
+}
+.jobcontents > div.jobst .jobtlist li dd em a:after{
+	display:block;content:"";clear:both;
+	width:16px;height:15px;
+	background:url('/images/job/call_icon.png');
+	position:absolute;
+	top:3px;left:0;
+}
+.jobcontents > div.jobst .jobtlist li dd em:last-of-type a:after{background:url('/images/job/mail_icon.png');}
+
+.jobcontents > div.process .graphicani{width:870px;margin:60px auto 0;padding-left:8px;}
+.jobcontents > div.process .graphicani li{float:left;}
+.jobcontents > div.process .graphicani li.bing{
+	width:110px;height:110px;
+	border:1px dotted #696461;
+	padding:4px;
+	background:#fff;
+
+	border-radius:50%;
+	margin-top:47px;
+	animation:bings 2s ease-in-out infinite;
+}
+	@keyframes bings{
+		0%{background:#fff;}
+		50%{background:#696461;}
+		100%{background:#fff;}
+	}
+.jobcontents > div.process .graphicani li.bing p{
+	display:block;
+	width:100px;height:100px;
+	font-size:13px;
+	color:#fff;
+	font-weight:500;
+	background:#696461;
+	padding-top:29px;
+
+	border-radius:50%;
+	text-align:center;
+}
+.jobcontents > div.process .graphicani li.arrow{
+	width:126px;
+	margin-top:26px;
+}
+.jobcontents > div.process .graphicani li.arrow p{
+	display:block;
+	width:100%;
+	text-align:center;
+	font-size:12.5px;
+	color:#333;
+}
+.jobcontents > div.process .graphicani li.arrow span{
+	display:block;
+	width:100%;height:19px;
+	padding-top:3px;
+
+	overflow:hidden;
+}
+.jobcontents > div.process .graphicani li.arrow span.right{
+	margin-top:19px;
+	text-align:left;
+	animation:spanright 3s ease-in-out infinite;
+}
+	@keyframes spanright{
+		0%{opacity:0;padding-left:0px;}
+		20%{opacity:1;padding-left:0px;}
+		80%{opacity:1;padding-left:60px;}
+		100%{opacity:0;padding-left:60px;}
+	}
+.jobcontents > div.process .graphicani li.arrow span.left{
+	margin-bottom:19px;
+	text-align:right;
+	animation:spanleft 3s ease-in-out infinite;
+}
+	@keyframes spanleft{
+		0%{opacity:0;padding-right:0px;}
+		20%{opacity:1;padding-right:0px;}
+		80%{opacity:1;padding-right:60px;}
+		100%{opacity:0;padding-right:60px;}
+	}
+.jobcontents > div.process .graphicani li.jobcenter{
+	width:200px;height:204px;
+}
+.jobcontents > div.process .graphicani li.jobcenter > div{
+	display:block;
+	width:200px;height:204px;
+	position:relative;
+}
+.jobcontents > div.process .graphicani li.jobcenter > div > span{position:absolute;z-index:-1;}
+.jobcontents > div.process .graphicani li.jobcenter > div > span.icon1{
+	top:10px;right:10px;
+	animation:icons1 2s linear infinite;
+}
+	@keyframes icons1{
+		0%{transform: rotate(0deg)}
+		100%{transform: rotate(360deg)}
+	}
+.jobcontents > div.process .graphicani li.jobcenter > div > span.icon2{
+	bottom:0;left:0;
+	animation:icons2 8s ease-in-out infinite;
+}
+	@keyframes icons2{
+		0%{transform: rotate(0deg)}
+		50%{transform: rotate(90deg)}
+		100%{transform: rotate(0deg)}
+	}
+.jobcontents > div.process .graphicani li.jobcenter > div > div{
+	display:block;
+	width:200px;height:204px;
+	border:1px dotted #fe8746;
+	padding:4px;
+
+	border-radius:50%;
+}
+.jobcontents > div.process .graphicani li.jobcenter > div > div p{
+	display:block;
+	width:100%;height:100%;
+	background:center 32px no-repeat,#367fa9;
+	border-radius:50%;
+	margin:0;
+	color:#fff;
+	font-size:16px;
+	text-align:center;
+	padding-top:55px;
+
+}
+.jobcontents > div.process .graphicani li.jobcenter > div > div p span{
+	display:block;
+	font-size:13px;
+	line-height:1.3;
+	color:#fff;
+}
+.jobcontents > div.process .graphicani li.jobgo{
+	width:188px;height:116px;
+	background:url('../dist/img/arms/index/jobs_go.gif') right top no-repeat;
+	margin-top:44px;
+}
+.jobcontents > div.process .graphicani li.jobgo p{
+	display:block;
+	font-size:16px;
+	font-weight:900;
+	color:#f1592a;
+	padding:47px 0 0 70px;
+
+}
+.jobcontents > div.process > strong{
+	display:block;
+	font-weight:500;
+	font-size:22px;
+	color:#111;
+	text-align:center;
+	margin-top:70px;
+}
+.jobcontents > div.process > strong span{
+	display:block;
+	font-weight:100;
+	font-size:13.5px;
+}
+.jobcontents > div.process .testani{
+	margin:70px auto;
+	background:url('../dist/img/arms/index/process_line.png') 50% 0 no-repeat;
+}
+.jobcontents > div.process .testani li{
+	width:33.333%;
+	text-align:center;
+}
+.jobcontents > div.process .testani li:nth-child(1),.jobcontents > div.process .testani li:nth-child(2),.jobcontents > div.process .testani li:nth-child(3){float:left;}
+.jobcontents > div.process .testani li:nth-child(4),.jobcontents > div.process .testani li:nth-child(5),.jobcontents > div.process .testani li:nth-child(6){float:right;}
+.jobcontents > div.process .testani li p{
+	display:block;
+	width:30px;height:30px;
+	line-height:26px;
+	border:2px solid #b7b7b7;
+	border-radius:50%;
+	background:#fff;
+	text-align:center;
+	font-weight:500;
+	color:#333;
+	margin:0 auto 15px;
+
+	animation:processno 9s ease-in-out infinite;
+}
+	@keyframes processno{
+		0%{transform:rotateY(0deg);}
+		8%{transform:rotateY(180deg);}
+		16%{transform:rotateY(0deg);}
+	}
+
+	.jobcontents > div.process .testani li:nth-child(1) p{animation-delay: 0s;}
+	.jobcontents > div.process .testani li:nth-child(2) p{animation-delay: 1.5s;}
+	.jobcontents > div.process .testani li:nth-child(3) p{animation-delay: 3s;}
+	.jobcontents > div.process .testani li:nth-child(4) p{animation-delay: 4.5s;}
+	.jobcontents > div.process .testani li:nth-child(5) p{animation-delay: 6s;}
+	.jobcontents > div.process .testani li:nth-child(6) p{animation-delay: 7.5s;}
+
+.jobcontents > div.process .testani li:last-child p{
+	border:2px solid #367fa9;
+}
+.jobcontents > div.process .testani li strong{
+	display:block;
+	font-size:13px;
+	font-weight:900;
+	color:#4c4c4c;
+	text-align:center;
+	opacity:1;
+	animation:processtext 9s ease-in-out infinite;
+}
+
+	@keyframes processtext{
+		0%{opacity:1;}
+		2%{opacity:0;}
+		4%{opacity:1;}
+		6%{opacity:0;}
+		8%{opacity:1;}
+		16%{opacity:1;}
+	}
+
+	.jobcontents > div.process .testani li:nth-child(1) strong{animation-delay: 0s;}
+	.jobcontents > div.process .testani li:nth-child(2) strong{animation-delay: 1.5s;}
+	.jobcontents > div.process .testani li:nth-child(3) strong{animation-delay: 3s;}
+	.jobcontents > div.process .testani li:nth-child(4) strong{animation-delay: 4.5s;}
+	.jobcontents > div.process .testani li:nth-child(5) strong{animation-delay: 6s;}
+	.jobcontents > div.process .testani li:nth-child(6) strong{animation-delay: 7.5s;}
+
+
+.jobcontents > div.process .testani li em{
+	display:block;
+	font-size:12px;
+	color:#454545;
+	line-height:1.3;
+	margin-bottom:40px;
+}
+.jobcontents > div.process .testani li em:before{
+	display:block;content:"";clear:both;
+	width:20px;height:1px;
+	background:#c2c2c2;
+	margin:15px auto;
+}
+
+
+/* ÀÌ¿ë¾È³» */
+.jobcontents div .processguide{
+	width:1020px;
+	margin:0 auto 60px;
+	background:url('/images/job/arrow_line.png') 50% 32px no-repeat;
+}
+.jobcontents div .processguide li{
+	float:left;
+	width:140px;
+	text-align:center;
+
+}
+.jobcontents div .processguide li:nth-child(odd){
+	width:150px;
+}
+.jobcontents div .processguide li:nth-child(even){
+	padding-top:26px;
+	text-align:left;
+	animation:guidearrow 1.5s ease-in-out 1.5s infinite;
+}
+	@keyframes guidearrow{
+		0%{padding-left:0;}
+		100%{padding-left:137px;}
+	}
+
+.jobcontents div .processguide5 li:nth-child(odd){
+	width:92px;
+}
+
+
+
+.jobcontents div .processguide li > span{
+	display:block;
+	width:76px;height:76px;
+	margin:0 auto 20px;
+	border:2px solid #f1592a;
+	background:#fff;
+	border-radius:50%;
+
+	overflow:hidden;
+	animation:guideicon 18s ease-in-out infinite;
+}
+	@keyframes guideicon{
+		0%{transform:rotateY(0deg);}
+		4%{transform:rotateY(180deg);}
+		8%{transform:rotateY(0deg);}
+	}
+
+	.jobcontents div:nth-of-type(1) > .processguide li:nth-child(1) > span{animation-delay: 0s;}
+	.jobcontents div:nth-of-type(1) > .processguide li:nth-child(3) > span{animation-delay: 1.5s;}
+	.jobcontents div:nth-of-type(1) > .processguide li:nth-child(5) > span{animation-delay: 3s;}
+	.jobcontents div:nth-of-type(1) > .processguide li:nth-child(7) > span{animation-delay: 4.5s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(1) li:nth-child(1) > span{animation-delay: 6s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(1) li:nth-child(3) > span{animation-delay: 7.5s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(1) li:nth-child(5) > span{animation-delay: 9s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(1) li:nth-child(7) > span{animation-delay: 10.5s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(2) li:nth-child(1) > span{animation-delay: 12s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(2) li:nth-child(3) > span{animation-delay: 13.5s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(2) li:nth-child(5) > span{animation-delay: 15s;}
+	.jobcontents div:nth-of-type(2) .processguide:nth-of-type(2) li:nth-child(7) > span{animation-delay: 16.5s;}
+
+
+
+.jobcontents div .processguide li > strong{
+	font-size:15.5px;
+	font-weight:500;
+	color:#333;
+}
+.jobcontents div .processguide li > strong span{
+	color:#f1592a;
+}
+
+
+.jobcontents div .btn{
+	width:407px;
+	margin:auto;
+	text-align:center;
+}
+.jobcontents div .btn a{
+	display:block;
+	width:200px;height:50px;
+	background:#696461;
+	color:#fff;
+	font-weight:500;
+	line-height:50px;
+	border:1px solid #696461;
+	margin:auto;
+
+	transition:0.3s;
+}
+
+.jobcontents div .btn a:hover{
+	color:#696461;
+	background:#fff;
+}
+.jobcontents > div:last-child{border-top:1px solid #ababab;}
+.jobcontents > div.process{border-top:none;}
+.jobcontents > div:last-child .btn a{float:left;}
+.jobcontents > div:last-child .btn a:last-child{
+	background:#f1592a;
+	border:1px solid #f1592a;
+	margin-left:7px;
+}
+
+.jobcontents > div:last-child .btn a:last-child:hover{
+	color:#f1592a;
+	background:#fff;
+}
+.jobcontents div > p:last-of-type{
+	text-align:right;
+	font-size:11.5px;
+}
+.jobcontents > div.infos > p{
+	display:block;
+	font-size:22px;
+	color:#343230;
+	text-align:center;
+	margin:20px 0;
+}
+
+</style>
+<!-- Main content -->
+<section class="content" style="margin-top: 0px">
+    <div class="row">
+
+        <div class="col-md-12">
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-black" style="background: url('../dist/img/arms/index/background.jpg') center center; background-repeat: no-repeat">
+                    <h2 class="widget-user-username"><b>aRMS는<br><br>제품(서비스) 관점의 JIRA 전용 RMS 입니다.</b></h2>
+                    <br>
+                    <h5 class="widget-user-desc">제품(서비스) 중심으로 Jira Project를 분석하고,</h5>
+                    <h5 class="widget-user-desc">제품(서비스) 중심으로 요구사항을 Jira Project 에 전파합니다.</h5>
+                </div>
+                <div class="widget-user-image">
+                    <img class="img-circle" src="../dist/img/arms/index/rts.jpg" alt="User Avatar">
+                </div>
+                <div class="box-footer" style="padding-top: 30px">
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block" style="">
+                                <h5 class="description-header" style="font-size: 15px; color: #4c4c4c;">Scope</h5>
+                                <span class="description-text" style="font-size: 13px;">제품(서비스)의 요구사항 시작이<br>Jira의 End User까지 공유</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header" style="font-size: 15px; color: #4c4c4c;">Cost</h5>
+                                <span class="description-text" style="font-size: 13px;">제품(서비스)의 Jira Project 관계 설정<br>맵핑을 통한 정확한 Fact 통계</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4">
+                            <div class="description-block">
+                                <h5 class="description-header" style="font-size: 15px; color: #4c4c4c;">Time</h5>
+                                <span class="description-text" style="font-size: 13px;">제품(서비스)의 Jira Version 관계 설정<br>맵핑을 통한 실질적인 진척도 측정</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>
+            <!-- /.widget-user -->
+        </div>
+        <!-- col-md-12 -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<section class="content" style="margin-top: 30px">
+    <div class="row">
+
+        <div class="col-md-12">
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-white" style="background: url('../dist/img/arms/index/communicate.jpg') center center; background-repeat: no-repeat">
+                </div>
+                <div class="box-footer" style="padding-top: 10px">
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header" style="font-size: 14px; color: #4c4c4c;">제품(서비스)</h5>
+                                    <span class="description-text" style="font-size: 13px;">aRMS는 제품과 서비스를 기준으로<br>구조화 합니다.</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header" style="font-size: 14px; color: #4c4c4c;">요구사항</h5>
+                                    <span class="description-text" style="font-size: 13px;">aRMS는 제품과 서비스를 기준으로<br>요구사항을 관리합니다.</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header" style="font-size: 14px; color: #4c4c4c;">Jira-Project ( Issue )</h5>
+                                    <span class="description-text" style="font-size: 13px;">aRMS는 제품과 서비스를 기준으로<br>JIRA Project 와 연계합니다.</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3">
+                                <div class="description-block">
+                                    <h5 class="description-header" style="font-size: 14px; color: #4c4c4c;">Test(QA)</h5>
+                                    <span class="description-text" style="font-size: 13px;">aRMS는 제품과 서비스를 기준으로<br>요구사항의 테스트를 관리합니다.</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.widget-user -->
+        </div>
+        <!-- col-md-12 -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<section class="content" style="margin-top: 30px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jobcontents">
+                <div class="process">
+                    <ul class="graphicani cf">
+                        <li class="bing" style="list-style: none;">
+                            <p>제품(서비스)<br>TEST 관리</p>
+                        </li>
+                        <li class="arrow" style="list-style: none;">
+                            <p>요구사항 별<br>TestCase 결과 수집</p>
+                            <span class="right"><img src="../dist/img/arms/index/arrow_right.png" alt="기업에서 취업지원센터로"></span>
+                            <span class="left"><img src="../dist/img/arms/index/arrow_left.png" alt="취업지원센터에서 기업으로"></span>
+                            <p>요구사항 별<br>TestCase 등록 관리</p>
+                        </li>
+                        <li class="jobcenter" style="list-style: none;">
+                            <div>
+                                <div><p>www.a-RMS.net<span>제품(서비스) - JIRA 맵핑 관리</span><span>제품(서비스) 기반 분석</span></p></div>
+                                <span class="icon1"><img src="../dist/img/arms/index/icon1.png" alt="아이콘"></span>
+                                <span class="icon2"><img src="../dist/img/arms/index/icon2.png" alt="아이콘"></span>
+                            </div>
+                        </li>
+                        <li class="arrow" style="list-style: none;">
+                            <p>제품(서비스) 별<br>요구사항 등록 관리</p>
+                            <span class="right"><img src="../dist/img/arms/index/arrow_right.png" alt="취업지원센터에서 수강생으로"></span>
+                            <span class="left"><img src="../dist/img/arms/index/arrow_left.png" alt="수강생에서 취업지원센터로"></span>
+                            <p>제품(서비스) 별<br>요구사항 이슈 수집</p>
+                        </li>
+                        <li class="bing" style="list-style: none;">
+                            <p>제품(서비스) 별<br>요구사항 관리</p>
+                        </li>
+                        <li class="jobgo" style="list-style: none;">
+                            <p>JIRA 연동</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="jobcontents">
+            <div class="process">
+                <ul class="testani cf" style="background-size: 1000px 310px; height: 310px;">
+                    <li style="list-style: none;">
+                        <p style="border:2px solid #367fa9;">1</p>
+                        <strong>제품(서비스) 등록 관리</strong>
+                        <em>제품(서비스)를 등록하고<br>구조적인 관리를 지원</em>
+                    </li>
+                    <li style="list-style: none;">
+                        <p style="border:2px solid #367fa9;">2</p>
+                        <strong>제품(서비스) - 요구사항 등록 관리</strong>
+                        <em>제품(서비스)를 기준하여<br>요구사항 등록을 지원</em>
+                    </li>
+                    <li style="list-style: none;">
+                        <p style="border:2px solid #367fa9;">3</p>
+                        <strong>제품(서비스) - JIRA 맵핑 관리</strong>
+                        <em>승인된 요구사항을<br>JIRA Project에 전파 지원</em>
+                    </li>
+                    <li style="list-style: none;">
+                        <p style="border:2px solid #367fa9;">4</p>
+                        <strong>JIRA ISSUE 수집 관리</strong>
+                        <em>전파된 요구사항 기준으로<br>이슈를 수집하여 저장</em>
+                    </li>
+                    <li style="list-style: none;">
+                        <p style="border:2px solid #367fa9;">5</p>
+                        <strong>제품(서비스) - 요구사항 TEST 관리</strong>
+                        <em>등록된 요구사항 기준으로<br>테스트 케이스 등록 지원</em>
+                    </li>
+                    <li style="list-style: none;">
+                        <p style="border:2px solid #367fa9;">6</p>
+                        <strong>제품(서비스) 분석 관리</strong>
+                        <em>제품(서비스) 기준으로<br>저장된 데이터를 기반으로 분석</em>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+</section>

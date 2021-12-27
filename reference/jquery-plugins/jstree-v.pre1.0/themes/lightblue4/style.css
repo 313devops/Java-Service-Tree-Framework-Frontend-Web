@@ -1,0 +1,99 @@
+/*
+ * jsTree lightblue4 theme 1.0
+ * Supported features: dots/no-dots, icons/no-icons, focused, loading
+ * Supported plugins: ui (hovered, clicked), checkbox, contextmenu, search
+ */
+
+.jstree-lightblue4 li, 
+.jstree-lightblue4 ins { background-image:url("313devgrp.png"); background-repeat:no-repeat; background-color:transparent; }
+.jstree-lightblue4 li { background-position:-90px 0; background-repeat:repeat-y; }
+.jstree-lightblue4 li.jstree-last { background:transparent; }
+.jstree-lightblue4 .jstree-open > ins { background-position:-72px 0; }
+.jstree-lightblue4 .jstree-closed > ins { background-position:-54px 0; }
+.jstree-lightblue4 .jstree-leaf > ins { background-position:-36px 0; }
+
+.jstree-lightblue4 .jstree-hovered { color: #ffffff; background-color: #666; border-color: rgba(0, 0, 0, 0.15); padding:0 2px 0 1px; }
+.jstree-lightblue4 .jstree-clicked { color: #ffffff; background-color: #e5603b; border-color: rgba(0, 0, 0, 0.15); padding:0 2px 0 1px; }
+.jstree-lightblue4 a .jstree-icon { background-position:-56px -19px; }
+.jstree-lightblue4 a.jstree-loading .jstree-icon { background:url("throbber.gif") center center no-repeat !important; }
+
+/*
+    edit 313devgrp
+ */
+.jstree-lightblue4.jstree-focused { background:transparent;}
+
+.jstree-lightblue4 .jstree-no-dots li, 
+.jstree-lightblue4 .jstree-no-dots .jstree-leaf > ins { background:transparent; }
+.jstree-lightblue4 .jstree-no-dots .jstree-open > ins { background-position:-18px 0; }
+.jstree-lightblue4 .jstree-no-dots .jstree-closed > ins { background-position:0 0; }
+
+.jstree-lightblue4 .jstree-no-icons a .jstree-icon { display:none; }
+
+.jstree-lightblue4 .jstree-search { font-style:italic; }
+
+.jstree-lightblue4 .jstree-no-icons .jstree-checkbox { display:inline-block; }
+.jstree-lightblue4 .jstree-no-checkboxes .jstree-checkbox { display:none !important; }
+.jstree-lightblue4 .jstree-checked > a > .jstree-checkbox { background-position:-38px -19px; }
+.jstree-lightblue4 .jstree-unchecked > a > .jstree-checkbox { background-position:-2px -19px; }
+.jstree-lightblue4 .jstree-undetermined > a > .jstree-checkbox { background-position:-20px -19px; }
+.jstree-lightblue4 .jstree-checked > a > .jstree-checkbox:hover { background-position:-38px -37px; }
+.jstree-lightblue4 .jstree-unchecked > a > .jstree-checkbox:hover { background-position:-2px -37px; }
+.jstree-lightblue4 .jstree-undetermined > a > .jstree-checkbox:hover { background-position:-20px -37px; }
+
+#vakata-dragged.jstree-lightblue4 ins { background:transparent !important; }
+#vakata-dragged.jstree-lightblue4 .jstree-ok { background:url("313devgrp.png") -2px -53px no-repeat !important; }
+#vakata-dragged.jstree-lightblue4 .jstree-invalid { background:url("313devgrp.png") -18px -53px no-repeat !important; }
+#jstree-marker.jstree-lightblue4 { background:url("313devgrp.png") -41px -57px no-repeat !important; text-indent:-100px; }
+
+.jstree-lightblue4 a.jstree-search { color:aqua; }
+.jstree-lightblue4 .jstree-locked a { color:silver; cursor:lightblue4; }
+
+#vakata-contextmenu { border: 0px !important; }
+#vakata-contextmenu.jstree-lightblue4-context, 
+#vakata-contextmenu.jstree-lightblue4-context li ul { background: rgba(51, 51, 51, 0.95);}
+#vakata-contextmenu.jstree-lightblue4-context li { }
+#vakata-contextmenu.jstree-lightblue4-context a { color:white; }
+#vakata-contextmenu.jstree-lightblue4-context a:hover, 
+#vakata-contextmenu.jstree-lightblue4-context .vakata-hover > a { padding:0 5px; background:#e8eff7; color:black; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; }
+#vakata-contextmenu.jstree-lightblue4-context li.jstree-contextmenu-disabled a, 
+#vakata-contextmenu.jstree-lightblue4-context li.jstree-contextmenu-disabled a:hover { color:silver; background:transparent; border:0; padding:1px 4px; }
+#vakata-contextmenu.jstree-lightblue4-context li.vakata-separator { background: rgba(51, 51, 51, 0.95); margin:0; }
+#vakata-contextmenu.jstree-lightblue4-context li ul { margin-left:-4px; }
+#vakata-contextmenu li ul { border: 0px !important; }
+#vakata-contextmenu li.vakata-separator { border-top: 0px !important; }
+
+/* IE6 BEGIN */
+.jstree-lightblue4 li, 
+.jstree-lightblue4 ins,
+#vakata-dragged.jstree-lightblue4 .jstree-invalid, 
+#vakata-dragged.jstree-lightblue4 .jstree-ok, 
+#jstree-marker.jstree-lightblue4 { _background-image:url("d.gif"); }
+.jstree-lightblue4 .jstree-open ins { _background-position:-72px 0; }
+.jstree-lightblue4 .jstree-closed ins { _background-position:-54px 0; }
+.jstree-lightblue4 .jstree-leaf ins { _background-position:-36px 0; }
+.jstree-lightblue4 a ins.jstree-icon { _background-position:-56px -19px; }
+#vakata-contextmenu.jstree-lightblue4-context ins { _display:none; }
+#vakata-contextmenu.jstree-lightblue4-context li { _zoom:1; }
+.jstree-lightblue4 .jstree-undetermined a .jstree-checkbox { _background-position:-20px -19px; }
+.jstree-lightblue4 .jstree-checked a .jstree-checkbox { _background-position:-38px -19px; }
+.jstree-lightblue4 .jstree-unchecked a .jstree-checkbox { _background-position:-2px -19px; }
+/* IE6 END */
+
+/*
+ add 313devgrp
+ */
+.jstree a {
+    display: inline-block;
+    line-height: 16px;
+    height: 16px;
+    color: #f8f8f8;
+    font-size: 13px;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 1px 2px;
+    margin: 0;
+}
+
+.jstree-rename-input {
+    color: #666666;
+}

@@ -1,0 +1,33 @@
+{{#extend "layout" title="Light Blue Dashboard - Maps"}}
+    {{#replace "sidebar"}}
+        {{> sidebar this conditionClass=conditionClass active="maps"}}
+    {{/replace}}
+    {{#replace "app_content"}}
+        <h2 class="page-title">Maps <small>Built-in google & vector maps</small></h2>
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="widget">
+              <header>
+                <h4>
+                  <i class="fa fa-google-plus"></i>
+                  Google maps. Basic
+                </h4>
+              </header>
+              <div class="body">
+                <div class="map">
+                  <div id="gmap" style="height: 600px"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+    {{/replace}}
+
+    {{#append "scripts"}}
+        <!-- page specific libs -->
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyCzLGh9l7VfM67K_8wSxf4rkqoyo_3YXgY"></script>
+        <script src="lib/gmaps/gmaps.js"></script>
+        <!-- page application js -->
+        <script src="js/gmap.js"></script>
+    {{/append}}
+{{/extend}}

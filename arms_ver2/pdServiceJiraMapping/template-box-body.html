@@ -1,0 +1,747 @@
+<div class="row font13">
+    <div class="col-md-3">
+
+            <div class="box box-primary" style="border-top-color: #bbbbbb; border-top-width: 0px">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <span class="font13" style="font-weight: bold;">
+                            <i class="fa fa-sort-amount-asc"></i> 제품(서비스) 조회
+                        </span>
+                    </h3>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked font13">
+                        <div class="font12">
+                            <div id="mmenu">
+                                <!--
+                                <button type="button" id="add_folder">
+                                    <i class="fa fa-plus"></i>
+                                    add folder
+                                </button>
+                                <button type="button" id="add_default">
+                                    <i class="fa fa-plus"></i>
+                                    add file
+                                </button>
+                                <button type="button" id="rename">
+                                    <i class="fa fa-eraser"></i>
+                                    rename
+                                </button>
+                                <button type="button" id="remove">
+                                    <i class="fa fa-minus"></i>
+                                    remove
+                                </button>
+                                <button type="button" id="cut">
+                                    <i class="fa fa-cut"></i>
+                                    cut
+                                </button>
+                                <button type="button" id="copy">
+                                    <i class="fa fa-copy"></i>
+                                    copy
+                                </button>
+                                <button type="button" id="paste">
+                                    <i class="fa fa-paste"></i>
+                                    paste
+                                </button>
+                                <button type="button" id="refresh" title="refresh" onclick="$('#demo').jstree('refresh',-1);">
+                                    <i class="fa fa-search"></i>
+                                    refresh
+                                </button>
+                                -->
+                                <input type="text" id="text" placeholder="찾을 노드 이름 입력" data-tooltip="Press Enter To Node To Search" />
+                                <button type="button" id="search" title="Search">
+                                    <i class="fa fa-search"></i>
+                                    Search
+                                </button>
+                            </div>
+                            <div id="demo"></div>
+                        </div>
+                    </ul>
+                    <br>
+                    <a href="ARMS-req-regist.html" class="btn btn-primary btn-block margin-bottom font13">제품 & 서비스 선택완료</a>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <span class="font13" style="font-weight: bold;">
+                            <i class="fa fa-balance-scale"></i> 선택된 제품(서비스) JIRA 정보
+                        </span>
+                    </h3>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="custom-control-sidebar-subheading font12">
+                                    SK Hynix aRMS 1.0.1-RELEASE
+                                    <span class="label label-danger pull-right">70%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="custom-control-sidebar-subheading font12">
+                                    Samsung SDS aRMS 1.0.3-RELEASE
+                                    <span class="label label-success pull-right">95%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="custom-control-sidebar-subheading font12">
+                                    aRMS Core 1.0.7-SNAPSHOT
+                                    <span class="label label-warning pull-right">50%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="custom-control-sidebar-subheading font12">
+                                    aRMS Atlassian Sell 3.1.3-SNAPSHOT
+                                    <span class="label label-primary pull-right">68%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /. box -->
+            <!-- /. box -->
+        </div>
+    <script type="text/javascript">
+            function jsTreeBuild(){
+
+                console.log("href: "+$(location).attr('href'));
+                console.log("protocol: "+$(location).attr('protocol'));
+                console.log("host: "+$(location).attr('host'));
+                console.log("pathname: "+$(location).attr('pathname'));
+                console.log("search: "+$(location).attr('search'));
+                console.log("hostname: "+$(location).attr('hostname'));
+                console.log("port: "+$(location).attr('port'));
+
+                var isDevelopingToRoute = "";
+
+                //operation enviorment setup and local development configuration
+                if($(location).attr('port') == 9999){
+                    console.log("csrf 우회 because local development");
+                    isDevelopingToRoute = "/auth-user";
+                }else{
+                    $.ajax({
+                        async: false,
+                        type: 'GET',
+                        url: "/api/jsTreeServiceFramework/security/csrf.do",
+                        success: function(r) {
+                            var token = r._csrf_token;
+                            var header = r._csrf_headerName;
+                            $(document).ajaxSend(function(e, xhr, options) {
+                                xhr.setRequestHeader(header, token);
+                            });
+                        }
+                    });
+                }
+
+                $("#demo").bind(
+                    "before.jstree",
+                    function(e, data) {
+                        $("#alog").append(data.func + "<br />");
+                        $("li:not([rel='drive']).jstree-open > a > .jstree-icon").css('background-image',
+                            'url(../dist/js/jstree-v.pre1.0/themes/toolbar_open.png)');
+                        $("li:not([rel='drive']).jstree-closed > a > .jstree-icon").css('background-image',
+                            'url(../dist/js/jstree-v.pre1.0/themes/ic_explorer.png)');
+                    }).jstree({
+                    // List of active plugins
+                    "plugins": ["themes", "json_data", "ui", "crrm", "cookies", "dnd", "search", "types", "hotkeys", "contextmenu", "checkbox"],
+
+                    //contextmenu
+                    "contextmenu": {
+                        items: { // Could be a function that should return an object like this one
+                            "create": {
+                                "separator_before": true,
+                                "separator_after": true,
+                                "label": "Create",
+                                "action": false,
+                                "submenu": {
+                                    "create_file": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "File",
+                                        action: function(obj) {
+                                            this.create(obj, "last", {
+                                                "attr": {
+                                                    "rel": "default"
+                                                }
+                                            });
+                                        }
+                                    },
+                                    "create_folder": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Folder",
+                                        action: function(obj) {
+                                            this.create(obj, "last", {
+                                                "attr": {
+                                                    "rel": "folder"
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                }
+                            },
+                            "ccp": {
+                                "separator_before": false,
+                                "separator_after": true,
+                                "label": "Edit",
+                                "action": false,
+                                "submenu": {
+                                    "cut": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Cut",
+                                        action: function(obj) {
+                                            this.cut(obj, "last", {
+                                                "attr": {
+                                                    "rel": "default"
+                                                }
+                                            });
+                                        }
+                                    },
+                                    "paste": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Paste",
+                                        action: function(obj) {
+                                            this.paste(obj, "last", {
+                                                "attr": {
+                                                    "rel": "folder"
+                                                }
+                                            });
+                                        }
+                                    },
+
+                                    "changeType": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Change Type",
+                                        "submenu": {
+                                            "toFile": {
+                                                "seperator_before": false,
+                                                "seperator_after": false,
+                                                "label": "toFile",
+                                                action: function(obj) {
+                                                    this.set_type("default");
+                                                }
+                                            },
+                                            "toFolder": {
+                                                "seperator_before": false,
+                                                "seperator_after": false,
+                                                "label": "toFolder",
+                                                action: function(obj) {
+                                                    this.set_type("folder");
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+                        }
+                    },
+
+                    // I usually configure the plugin that handles the data first
+                    // This example uses JSON as it is most common
+                    "json_data": {
+                        // This tree is ajax enabled - as this is most common, and maybe a bit more complex
+                        // All the options are almost the same as jQuery's AJAX (read the docs)
+                        "ajax": {
+                            // the URL to fetch the data
+                            "url": isDevelopingToRoute + "/com/ext/jstree/springiBatis/core/getChildNode.do",
+                            // the `data` function is executed in the instance's scope
+                            // the parameter is the node being loaded
+                            // (may be -1, 0, or undefined when loading the root nodes)
+                            "data": function(n) {
+                                // the result is fed to the AJAX request `data` option
+                                return {
+                                    "c_id": n.attr ? n.attr("id").replace("node_", "").replace("copy_", "") : 1
+                                };
+                            },
+                            "success": function(n) {
+                                jSuccess('access good');
+                            }
+                        }
+                    },
+                    // Configuring the search plugin
+                    "search": {
+                        // As this has been a common question - async search
+                        // Same as above - the `ajax` config option is actually jQuery's AJAX object
+                        "ajax": {
+                            "url": isDevelopingToRoute + "/com/ext/jstree/springiBatis/core/searchNode.do",
+                            // You get the search string as a parameter
+                            "data": function(str) {
+                                return {
+                                    "searchString": str
+                                };
+                            },
+                            "success": function(n) {
+                                jSuccess('search data complete');
+                            }
+                        }
+                    },
+                    // Using types - most of the time this is an overkill
+                    // read the docs carefully to decide whether you need types
+                    "types": {
+                        // I set both options to -2, as I do not need depth and children count checking
+                        // Those two checks may slow jstree a lot, so use only when needed
+                        "max_depth": -2,
+                        "max_children": -2,
+                        // I want only `drive` nodes to be root nodes
+                        // This will prevent moving or creating any other type as a root node
+                        "valid_children": ["drive"],
+                        "types": {
+                            // The default type
+                            "default": {
+                                // I want this type to have no children (so only leaf nodes)
+                                // In my case - those are files
+                                "valid_children": "none",
+                                // If we specify an icon for the default type it WILL OVERRIDE the theme icons
+                                "icon": {
+                                    "image": "../dist/js/jstree-v.pre1.0/themes/attibutes.png"
+                                }
+                            },
+                            // The `folder` type
+                            "folder": {
+                                // can have files and other folders inside of it, but NOT `drive` nodes
+                                "valid_children": ["default", "folder"],
+                                "icon": {
+                                    "image": "../dist/js/jstree-v.pre1.0/themes/ic_explorer.png"
+                                }
+                            },
+                            // The `drive` nodes
+                            "drive": {
+                                // can have files and folders inside, but NOT other `drive` nodes
+                                "valid_children": ["default", "folder"],
+                                "icon": {
+                                    "image": "../dist/js/jstree-v.pre1.0/themes/home.png"
+                                },
+                                // those prevent the functions with the same name to be used on `drive` nodes
+                                // internally the `before` event is used
+                                "start_drag": false,
+                                "move_node": false,
+                                "delete_node": false,
+                                "remove": false
+                            }
+                        }
+                    },
+                    // UI & core - the nodes to initially select and open will be overwritten by the cookie plugin
+
+                    // the UI plugin - it handles selecting/deselecting/hovering nodes
+                    "ui": {
+                        // this makes the node with ID node_4 selected onload
+                        "initially_select": ["node_4"]
+                    },
+                    // the core plugin - not many options here
+                    "core": {
+                        // just open those two nodes up
+                        // as this is an AJAX enabled tree, both will be downloaded from the server
+                        "initially_open": ["node_2", "node_3"]
+                    }
+                }).bind("create.jstree", function(e, data) {
+                    $.post("/com/ext/jstree/springiBatis/core/addNode.do", {
+                        "ref": data.rslt.parent.attr("id").replace("node_", "").replace("copy_", ""),
+                        "c_position": data.rslt.position,
+                        "c_title": data.rslt.name,
+                        "c_type": data.rslt.obj.attr("rel")
+                    }, function(r) {
+                        if (r.status) {
+                            $(data.rslt.obj).attr("id", "node_" + r.id);
+                            jNotify('Notification : <strong>Add Node</strong>, Complete !');
+                        } else {
+                            $.jstree.rollback(data.rlbk);
+                        }
+                        if (typeof Chat != "undefined"){
+                            Chat.sendMessage("노드를 추가했습니다. 추가된 노드의 아이디는 " + r.id , function(data) {
+                                console.log(data);
+                            });
+                        }
+                        jstreeDataTableReload();
+                        jsTreeBuild();
+                    });
+                }).bind("remove.jstree", function(e, data) {
+                    data.rslt.obj.each(function() {
+                        $.ajax({
+                            async: false,
+                            type: 'POST',
+                            url: "/com/ext/jstree/springiBatis/core/removeNode.do",
+                            data: {
+                                "c_id": this.id.replace("node_", "").replace("copy_", "")
+                            },
+                            success: function(r) {
+                                jNotify('Notification : <strong>Remove Node</strong>, Complete !');
+                                if (typeof Chat != "undefined"){
+                                    Chat.sendMessage("노드를 삭제했습니다. 삭제된 노드의 아이디는 " + r.c_id , function(data) {
+                                        console.log(data);
+                                    });
+                                }
+                                jstreeDataTableReload();
+                                jsTreeBuild();
+                            }
+                        });
+                    });
+                }).bind("rename.jstree", function(e, data) {
+                    $.post("/com/ext/jstree/springiBatis/core/alterNode.do", {
+                        "c_id": data.rslt.obj.attr("id").replace("node_", "").replace("copy_", ""),
+                        "c_title": data.rslt.new_name,
+                        "c_type": data.rslt.obj.attr("rel")
+                    }, function(r) {
+                        if (!r.status) {
+                            $.jstree.rollback(data.rlbk);
+                        }
+                        jSuccess('Rename Node Complete');
+                        if (typeof Chat != "undefined"){
+                            Chat.sendMessage("노드를 변경했습니다. 변경된 노드의 아이디는 " + r.c_id , function(data) {
+                                console.log(data);
+                            });
+                        }
+                        jstreeDataTableReload();
+                        jsTreeBuild();
+                    });
+                }).bind("set_type.jstree", function(e, data) {
+                    $.post("/com/ext/jstree/springiBatis/core/alterNodeType.do", {
+                        "c_id": data.rslt.obj.attr("id").replace("node_", "").replace("copy_", ""),
+                        "c_title": data.rslt.new_name,
+                        "c_type": data.rslt.obj.attr("rel")
+                    }, function(r) {
+                        jSuccess('Node Type Change');
+                        if (typeof Chat != "undefined"){
+                            Chat.sendMessage("노드를 변경했습니다. 변경된 노드의 아이디는 " + r.c_id , function(data) {
+                                console.log(data);
+                            });
+                        }
+                        jstreeDataTableReload();
+                        jsTreeBuild();
+                    });
+                }).bind("move_node.jstree", function(e, data) {
+                    data.rslt.o.each(function(i) {
+                        $.ajax({
+                            async: false,
+                            type: 'POST',
+                            url: "/com/ext/jstree/springiBatis/core/moveNode.do",
+                            data: {
+                                "c_id": $(this).attr("id").replace("node_", "").replace("copy_", ""),
+                                "ref": data.rslt.cr === -1 ? 1 : data.rslt.np.attr("id").replace("node_", "").replace("copy_", ""),
+                                "c_position": data.rslt.cp + i,
+                                "c_title": data.rslt.name,
+                                "copy": data.rslt.cy ? 1 : 0,
+                                "multiCounter": i
+                            },
+                            success: function(r) {
+                                if (r.status) {
+                                    $.jstree.rollback(data.rlbk);
+                                } else {
+                                    $(data.rslt.oc).attr("id", "node_" + r.id);
+                                    if (data.rslt.cy && $(data.rslt.oc).children("UL").length) {
+                                        data.inst.refresh(data.inst._get_parent(data.rslt.oc));
+                                    }
+                                }
+                                jNotify('Notification : <strong>Move Node</strong> Complete !');
+                                if (typeof Chat != "undefined"){
+                                    Chat.sendMessage("노드가 이동되었습니다. 이동된 노드의 아이디는 " + r.c_id , function(data) {
+                                        console.log(data);
+                                    });
+                                }
+                                jstreeDataTableReload();
+                                jsTreeBuild();
+                            }
+                        });
+                    });
+                }).bind("select_node.jstree", function (event, data) {
+                    // `data.rslt.obj` is the jquery extended node that was clicked
+                    if ($.isFunction(jsTreeClick)) {
+                        console.log(data.rslt.obj);
+                        jsTreeClick(data.rslt.obj.attr("id"));
+                    }
+                });
+
+                $("#mmenu input, #mmenu button").click(function() {
+                    switch (this.id) {
+                        case "add_default":
+                        case "add_folder":
+                            $("#demo").jstree("create", null, "last", {
+                                "attr": {
+                                    "rel": this.id.toString().replace("add_", "")
+                                }
+                            });
+                            break;
+                        case "search":
+                            $("#demo").jstree("search", document.getElementById("text").value);
+                            //$("#jstreeTable_filter").find('input[type="search"]').val();
+                            $('#jstreeTable').DataTable().column(6).search(document.getElementById("text").value).draw();
+                            break;
+                        case "text":
+                            break;
+                        default:
+                            $("#demo").jstree(this.id);
+                            break;
+                    }
+                });
+            }
+
+            $(function() {
+                jsTreeBuild();
+            });
+            // Code for the menu buttons
+        </script>
+    <!-- /.col -->
+    <div class="col-md-9">
+        <div class="box box-primary" style="border-top-color: #bbbbbb; border-top-width: 0px">
+            <div class="box-header">
+                <h3 class="box-title">
+                    <span class="font13" style="font-weight: bold;">
+                        <i class="fa fa-copy"></i> 제품(서비스) &harr; JIRA Project 연결
+                    </span>
+                </h3>
+
+                <div class="box-tools pull-right">
+                    <div class="has-feedback">
+                        <input type="text" class="form-control input-sm" placeholder="Search Jira Project">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </div>
+                <!-- /.box-tools -->
+
+            </div>
+            <div class="box-body no-padding">
+                <div class="form-group has-warning" style="margin-bottom: 0px !important; padding: 10px;">
+                    <label class="control-label" for="inputWarning" style="margin-bottom: 5px !important; margin-top: 0px;">
+                        <i class="fa fa-arrow-left"></i> STEP 1. 제품(서비스)를 선택해 주세요
+                    </label>
+                    <input type="text" class="form-control font13" id="inputWarning" placeholder="연결 할 제품(서비스): aRMS Monitoring System">
+                    <label class="control-label" for="inputWarning" style="margin-bottom: 5px !important; margin-top: 5px;">
+                        <i class="fa fa-arrow-down"></i> STEP 2. 선택한 제품(서비스)와 연결 할 Jira Project 를 선택해 주세요
+                    </label>
+                </div>
+                <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                    </button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                    </div>
+                    <div class="btn-group">
+                        <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>
+                    </div>
+                    <!-- /.btn-group -->
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                    <div class="pull-right font12">
+                        1-50/7313
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <!-- /.btn-group -->
+                    </div>
+                    <!-- /.pull-right -->
+                </div>
+                <div class="table-responsive mailbox-messages" style="border-top: 1px dotted #d2d6de;background-color: #f4f4f4;">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc font12" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"></th>
+                            <th class="sorting font12" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"></th>
+                            <th class="sorting font12" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">JIRA Project Name</th>
+                            <th class="sorting font12" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">JIRA Project Version</th>
+                            <th class="sorting font12" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"></th>
+                            <th class="sorting font12" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">reg Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - aRMS Backend Project</a></td>
+                                                    <td class="mailbox-subject"> - Version : 1.0.3-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td class="mailbox-date">5 mins ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - aRMS Frontend RWD Project</a></td>
+                                                    <td class="mailbox-subject"> - Version : 135.40.13-RELEASE
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">28 mins ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Docker Swarm aRMS Stack Project</a></td>
+                                                    <td class="mailbox-subject"> - Version : 21.11.1-RELEASE
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">11 hours ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Java Service Tree Framework Core LIB</a></td>
+                                                    <td class="mailbox-subject"> - Version : 21.10.20-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td class="mailbox-date">15 hours ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - DevOps Based JSTF Backend Project</a></td>
+                                                    <td class="mailbox-subject"> - Version : 40.30.12-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">Yesterday</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - DevOps AdminLTE2 Frontend Project</a></td>
+                                                    <td class="mailbox-subject"> - Version : 8.9.12-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">2 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Allinone Zuul Proxy Auth Project</a></td>
+                                                    <td class="mailbox-subject"> - Version : 3.0.2-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">2 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Allinone Monitoring Total System</a></td>
+                                                    <td class="mailbox-subject"> - Version : 2.9.25-RELEASE
+                                                    </td>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td class="mailbox-date">2 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - NAS Storage System</a></td>
+                                                    <td class="mailbox-subject"> - Version : 3.13.2-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td class="mailbox-date">2 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Crawler System</a></td>
+                                                    <td class="mailbox-subject"> - Version : 7.9.2-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td class="mailbox-date">2 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Conflunce Mapping Project JSTF</a></td>
+                                                    <td class="mailbox-subject"> - Version : 1.1.1-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">4 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Fecru Mapping Project JSTF</a></td>
+                                                    <td class="mailbox-subject"> - Version : 27.91.2-RELEASE
+                                                    </td>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td class="mailbox-date">12 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Bitbucket Mapping Project JSTF</a></td>
+                                                    <td class="mailbox-subject"> - Version : 8.9.2-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">12 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Bamboo Mapping Project JSTF</a></td>
+                                                    <td class="mailbox-subject"> - Version : 3.19.12-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">14 days ago</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox"></td>
+                                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                                    <td class="mailbox-name"><a href="#">JIRA - Jenkins Mapping Project JSTF</a></td>
+                                                    <td class="mailbox-subject"> - Version : 1.1.2-SNAPSHOT
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">15 days ago</td>
+                                                </tr>
+                                                </tbody>
+                    </table>
+                    <!-- /.table -->
+                </div>
+                <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-padding">
+                <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                    </button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                    </div>
+                    <!-- /.btn-group -->
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                    <a href="#" class="btn btn-primary font13">제품(서비스) JIRA 연결</a>
+                    <div class="pull-right font12">
+                        <ul class="pagination" style="margin: 0px"><li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul>
+                    </div>
+                    <!-- /.pull-right -->
+                </div>
+            </div>
+        </div>
+        <!-- /. box -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

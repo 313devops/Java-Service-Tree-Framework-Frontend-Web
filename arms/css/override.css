@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-regular.eot'); /* IE9 Compat Modes */
+  src: local('NanumGothic'),
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-regular.woff') format('woff'), /* Modern Browsers */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+/* nanum-gothic-800 - latin_korean */
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-800.eot'); /* IE9 Compat Modes */
+  src: local('NanumGothic ExtraBold'), local('NanumGothic-ExtraBold'),
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-800.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-800.woff') format('woff'), /* Modern Browsers */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-800.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-800.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+/* nanum-gothic-700 - latin_korean */
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-700.eot'); /* IE9 Compat Modes */
+  src: local('NanumGothic Bold'), local('NanumGothic-Bold'),
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-700.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-700.woff') format('woff'), /* Modern Browsers */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-700.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../../reference/common-design/font/NanumGothic/nanum-gothic-v11-latin_korean-700.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+html,
+body {
+  font-family: 'Nanum Gothic' !important;
+}
+body.org {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjEwJSIgY3k9IjAiIHI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9InJnYmEoNzQsIDEyMSwgMTQ3LCAwLjg5KSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSJyZ2JhKDIyNiwgMjI2LCAyMjYsIDAuODcpIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSJyZ2JhKDE4NSwgMTM1LCAxMzEsIDAuODcpIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4="), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  background-color: rgba(74, 121, 147, 0.89);
+  background: radial-gradient(farthest-side ellipse at 10% 0, rgba(74, 121, 147, 0.89), rgba(204, 204, 204, 0.85) 60%, rgba(185, 135, 131, 0.87) 120%), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  background: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(74, 121, 147, 0.89), rgba(204, 204, 204, 0.85) 60%, rgba(185, 135, 131, 0.87) 120%), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  background: -moz-radial-gradient(10% 0, farthest-side ellipse, rgba(74, 121, 147, 0.89), rgba(204, 204, 204, 0.85) 60%, rgba(185, 135, 131, 0.87) 120%), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+}
+body {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjEwJSIgY3k9IjAiIHI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9InJnYmEoMTAyLCAxMDUsIDEwNCwgMC45MCkiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0icmdiYSg5MywgMTEyLCAxMTksIDAuODkpIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSJyZ2JhKDE2MCwgMTc0LCAxNTAsIDAuOTApIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4="), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  background-color: rgba(102, 105, 104, 0.9);
+  background: radial-gradient(farthest-side ellipse at 10% 0, rgba(40, 40, 40, 0.9), rgba(90, 100, 130, 0.89), rgba(60, 60, 60, 0.9)), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  background: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(40, 40, 40, 0.9), rgba(90, 100, 130, 0.89), rgba(60, 60, 60, 0.9)), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  background: -moz-radial-gradient(10% 0, farthest-side ellipse, rgba(40, 40, 40, 0.9), rgba(90, 100, 130, 0.89), rgba(60, 60, 60, 0.9)), url("../../reference/light-blue/img/bgnoise_lg_dark.png");
+  padding-bottom: 10px;
+}
+/* Font */
+.jstree-default-context{
+  font-family: 'Nanum Gothic';
+  font-size: 12px;
+}
+.font10{
+  font-family: 'Nanum Gothic';
+  font-size: 10px;
+}
+.font11{
+  font-family: 'Nanum Gothic';
+  font-size: 11px;
+}
+.font12{
+  font-family: 'Nanum Gothic';
+  font-size: 12px;
+}
+.font13{
+  font-family: 'Nanum Gothic';
+  font-size: 13px;
+}
+.font14{
+  font-family: 'Nanum Gothic';
+  font-size: 14px;
+}
+.font15{
+  font-family: 'Nanum Gothic';
+  font-size: 15px;
+}
+.font16{
+  font-family: 'Nanum Gothic';
+  font-size: 16px;
+}
+.font17{
+  font-family: 'Nanum Gothic';
+  font-size: 17px;
+}
+.font18{
+  font-family: 'Nanum Gothic';
+  font-size: 18px;
+}
+
+.content {
+  position: relative;
+  padding: 30px 2.5641%;
+  -webkit-transition: margin-top 0.35s ease, opacity 0.2s;
+  -o-transition: margin-top 0.35s ease, opacity 0.2s;
+  transition: margin-top 0.35s ease, opacity 0.2s;
+  max-width: none;
+  width: auto;
+  opacity: 1;
+}
+
+.widgetheader {
+  border-radius: 3px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 5px 5px 1px 5px;
+  color: #f8f8f8;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+#topicon{
+  width:36px;height:35px;
+  position:fixed;right:1%;bottom:15px;
+  z-index:200;
+  transition:0.3s;
+  cursor:pointer;
+  opacity:0;
+  border-radius:50%;
+  overflow:hidden;
+  padding-left:-1px;
+  animation: doongdoong 1.3s linear infinite;
+}
+@keyframes doongdoong{
+  0%{bottom:15px;}
+  50%{bottom:10px;}
+  100%{bottom:15px;}
+}
+
+.content .content-footer {
+  position: initial;
+  bottom: 0px;
+  color: #d2d2d2;
+}
+
+.breadcrumb {
+  padding: 0px;
+  margin: 3px;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+.darkBack {
+  background: rgba(51, 51, 51, 0.4) !important;
+  border: 1px solid rgba(51, 51, 51, 0.425) !important;
+}
+
+.searchDarkBack {
+  background: url(../../reference/lightblue4/docs/img/search-white.png) 5px 5px no-repeat rgba(51, 51, 51, 0.4) !important;
+  border: 1px solid rgba(51, 51, 51, 0.425) !important;
+}
+
+/*****************/
+/** jNotify CSS **/
+/*****************/
+#jNotify {
+  position:absolute !important;
+  -webkit-transition: background-color 0.4s !important;
+  -o-transition: background-color 0.4s !important;
+  transition: background-color 0.4s !important;
+  border-radius: 5px !important;
+  border-color: transparent !important;
+  background-color: rgba(52, 52, 52, 0.425) !important;
+  margin-bottom: 1em !important;
+  color: #f8f8f8 !important;
+  font-weight: 500 !important;
+
+  background:#d8e6fc  url('../info.png') no-repeat 15px center;
+  padding:10px;
+  padding-left:50px;
+  margin:15px;
+  z-index:99999;
+  -moz-border-radius : 5px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+}
+#jNotify a {color:#35517c !important;text-decoration:none;}
+
+/******************/
+/** jSuccess CSS **/
+/******************/
+#jSuccess {
+  position:absolute !important;
+  -webkit-transition: background-color 0.4s !important;
+  -o-transition: background-color 0.4s !important;
+  transition: background-color 0.4s !important;
+  border-radius: 5px !important;
+  border-color: transparent !important;
+  background-color: rgba(52, 52, 52, 0.425) !important;
+  margin-bottom: 1em !important;
+  color: #f8f8f8 !important;
+  font-weight: 500 !important;
+
+  background:#E6EFC2  url('../success.png') no-repeat 15px center;
+  padding:10px;
+  padding-left:50px;
+  margin:15px;
+  z-index:99999;
+  -moz-border-radius : 5px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+}
+#jSuccess a {color:#264409 !important;text-decoration:none;}
+
+
+/****************/
+/** jError CSS **/
+/****************/
+#jError {
+  position:absolute !important;
+  -webkit-transition: background-color 0.4s !important;
+  -o-transition: background-color 0.4s !important;
+  transition: background-color 0.4s !important;
+  border-radius: 5px !important;
+  border-color: transparent !important;
+  background-color: rgba(52, 52, 52, 0.425) !important;
+  margin-bottom: 1em !important;
+  color: #f8f8f8 !important;
+  font-weight: 500 !important;
+
+  background:#FBE3E4  url('../error.png') no-repeat 15px center;
+  padding:10px;
+  padding-left:50px;
+  margin:15px;
+  z-index:99999;
+  -moz-border-radius : 5px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+}
+#jError a {color:#8a1f11 !important;text-decoration:none;}
+
+/** OVERLAY **/
+#jOverlay {
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:99998
+}

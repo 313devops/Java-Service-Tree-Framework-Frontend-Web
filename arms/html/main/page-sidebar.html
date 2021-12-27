@@ -1,0 +1,129 @@
+<ul id="side-nav" class="side-nav">
+    <li class="" id="sidebar_menu_dashboard">
+        <a href="main.html"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+    </li>
+    <li class="panel">
+        <a class="accordion-toggle collapsed" data-toggle="collapse"
+           data-parent="#side-nav" href="#product-elements-collapse"
+           id="sidebar_menu_product">
+           <i class="fa fa-font"></i>
+           <span class="name">Product</span>
+        </a>
+        <ul id="product-elements-collapse" class="panel-collapse collapse ">
+            <li class="" id="sidebar_menu_product_regist" data-no-pjax><a href="pdServiceRegist.html">등록</a></li>
+            <li class=""><a href="icons.html">조회/변경</a></li>
+            <li class=""><a href="maps.html" data-no-pjax>구조 관리</a></li>
+            <li class=""><a href="icons.html">Jira 등록/변경</a></li>
+            <li class=""><a href="icons.html">제품 - Jira 연결</a></li>
+        </ul>
+    </li>
+    <li class="panel">
+        <a class="accordion-toggle collapsed" data-toggle="collapse"
+           data-parent="#side-nav" href="#requirement-elements-collapse">
+           <i class="fa fa-table"></i>
+           <span class="name">Requirement</span>
+        </a>
+        <ul id="requirement-elements-collapse" class="panel-collapse collapse">
+            <li class=""><a href="charts.html">조회</a></li>
+            <li class=""><a href="icons.html">등록</a></li>
+            <li class=""><a href="maps.html" data-no-pjax>변경 요청</a></li>
+            <li class=""><a href="icons.html">리뷰/승인</a></li>
+            <li class=""><a href="icons.html">진척 현황</a></li>
+        </ul>
+    </li>
+    <li class="">
+        <a href="notifications.html"><i class="fa fa-bell"></i> Test</a></li>
+    </li>
+    <li class="panel">
+        <a class="accordion-toggle collapsed" data-toggle="collapse"
+           data-parent="#side-nav" href="#analisys-elements-collapse"><i class="fa fa-magic"></i> <span class="name">Analisys</span></a>
+        <ul id="analisys-elements-collapse" class="panel-collapse collapse ">
+            <li class=""><a href="charts.html">데이터 수집</a></li>
+            <li class=""><a href="icons.html">데이터 분석</a></li>
+            <li class=""><a href="maps.html" data-no-pjax>제품 출시</a></li>
+            <li class=""><a href="charts.html">제품 - Jira</a></li>
+            <li class=""><a href="icons.html">제품 - 히트맵</a></li>
+            <li class=""><a href="maps.html" data-no-pjax>제품 - 멤버</a></li>
+            <li class=""><a href="charts.html">요구사항-권한</a></li>
+            <li class=""><a href="icons.html">요구사항-Jira</a></li>
+            <li class=""><a href="maps.html" data-no-pjax>요구사항-연관</a></li>
+        </ul>
+    </li>
+</ul>
+
+<h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
+<!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
+<ul class="sidebar-labels">
+    <li>
+        <a href="#">
+            <!-- yep, .circle again -->
+            <i class="fa fa-circle text-success"></i>
+            <span class="label-name">My Recent</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fa fa-circle text-primary"></i>
+            <span class="label-name">Starred</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fa fa-circle text-danger"></i>
+            <span class="label-name">Background</span>
+        </a>
+    </li>
+</ul>
+
+<h5 class="sidebar-nav-title">Projects</h5>
+<!-- A place for sidebar notifications & alerts -->
+<div class="sidebar-alerts">
+    <div class="alert fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+        <span class="text-white fw-semi-bold">Sales Report</span> <br>
+        <div class="progress progress-xs mt-xs mb-0">
+            <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
+        </div>
+        <small>Calculating x-axis bias... 65%</small>
+    </div>
+    <div class="alert fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+        <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
+        <div class="progress progress-xs mt-xs mb-0">
+            <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
+        </div>
+        <small>Provide required notes</small>
+    </div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+
+    /*   Move content down when second-level menu opened */
+    $("#side-nav").find("a.accordion-toggle").on('click',function(){
+        if ($(window).width() < 768){
+            var $this = $(this),
+                $sideNav = $('#side-nav'),
+                menuHeight = $sideNav.height() + parseInt($sideNav.css('margin-top')) + parseInt($sideNav.css('margin-bottom')),
+                contentMargin = menuHeight + 20,
+                $secondLevelMenu = $this.find("+ ul"),
+                $subMenuChildren = $secondLevelMenu.find("> li"),
+                subMenuHeight = $.map($subMenuChildren, function(child){ return $(child).height()})
+                    .reduce(function(sum, el){ return sum + el}),
+                $content = $(".content");
+            if (!$secondLevelMenu.is(".in")){ //when open
+                //edit 313 devgrp
+                if(typeof $this.closest('ul').find('> .panel > .panel-collapse.open').height() == "undefined"){
+                    $content.css("margin-top", (contentMargin + ($subMenuChildren.length*27) + 'px'));
+                }else{
+                    $content.css("margin-top", (contentMargin + subMenuHeight - $this.closest('ul').find('> .panel > .panel-collapse.open').height()) + 'px');
+                }
+            } else { //when close
+                $content.css("margin-top", contentMargin - subMenuHeight + 'px');
+            }
+        }
+    });
+
+    //]]>
+</script>

@@ -1,0 +1,699 @@
+<div class="row font13">
+        <div class="col-md-3">
+            <a href="ARMS-pdservice-regist.html" class="btn btn-primary btn-block margin-bottom font13">제품(서비스) 등록 설명</a>
+
+            <div class="box box-primary" style="border-top-color: #bbbbbb;">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <span class="font13" style="font-weight: bold;">
+                            <i class="fa fa-sort-amount-asc"></i> 제품(서비스) 조회
+                        </span>
+                    </h3>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked font13">
+                        <div class="font12">
+                            <div id="mmenu">
+                                <!--
+                                <button type="button" id="add_folder">
+                                    <i class="fa fa-plus"></i>
+                                    add folder
+                                </button>
+                                <button type="button" id="add_default">
+                                    <i class="fa fa-plus"></i>
+                                    add file
+                                </button>
+                                <button type="button" id="rename">
+                                    <i class="fa fa-eraser"></i>
+                                    rename
+                                </button>
+                                <button type="button" id="remove">
+                                    <i class="fa fa-minus"></i>
+                                    remove
+                                </button>
+                                <button type="button" id="cut">
+                                    <i class="fa fa-cut"></i>
+                                    cut
+                                </button>
+                                <button type="button" id="copy">
+                                    <i class="fa fa-copy"></i>
+                                    copy
+                                </button>
+                                <button type="button" id="paste">
+                                    <i class="fa fa-paste"></i>
+                                    paste
+                                </button>
+                                <button type="button" id="refresh" title="refresh" onclick="$('#demo').jstree('refresh',-1);">
+                                    <i class="fa fa-search"></i>
+                                    refresh
+                                </button>
+                                -->
+                                <input type="text" id="text" placeholder="찾을 노드 이름 입력" data-tooltip="Press Enter To Node To Search" />
+                                <button type="button" id="search" title="Search">
+                                    <i class="fa fa-search"></i>
+                                    Search
+                                </button>
+                            </div>
+                            <div id="demo"></div>
+                        </div>
+                    </ul>
+                    <br>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <!-- /. box -->
+            <!-- /. box -->
+        </div>
+        <script type="text/javascript">
+
+            function jsTreeBuild(){
+
+                console.log("href: "+$(location).attr('href'));
+                console.log("protocol: "+$(location).attr('protocol'));
+                console.log("host: "+$(location).attr('host'));
+                console.log("pathname: "+$(location).attr('pathname'));
+                console.log("search: "+$(location).attr('search'));
+                console.log("hostname: "+$(location).attr('hostname'));
+                console.log("port: "+$(location).attr('port'));
+
+                var isDevelopingToRoute = "/auth-user";
+
+                //operation enviorment setup and local development configuration
+                if($(location).attr('port') == 9999){
+                    console.log("csrf 우회 because local development");
+                    isDevelopingToRoute = "/auth-user";
+                }else{
+                    $.ajax({
+                        async: false,
+                        type: 'GET',
+                        url: "/api/jsTreeServiceFramework/security/csrf.do",
+                        success: function(r) {
+                            var token = r._csrf_token;
+                            var header = r._csrf_headerName;
+                            $(document).ajaxSend(function(e, xhr, options) {
+                                xhr.setRequestHeader(header, token);
+                            });
+                        }
+                    });
+                }
+
+                $("#demo").bind(
+                    "before.jstree",
+                    function(e, data) {
+                        $("#alog").append(data.func + "<br />");
+                        $("li:not([rel='drive']).jstree-open > a > .jstree-icon").css('background-image',
+                            'url(../dist/js/jstree-v.pre1.0/themes/toolbar_open.png)');
+                        $("li:not([rel='drive']).jstree-closed > a > .jstree-icon").css('background-image',
+                            'url(../dist/js/jstree-v.pre1.0/themes/ic_explorer.png)');
+                    }).jstree({
+                    // List of active plugins
+                    "plugins": ["themes", "json_data", "ui", "crrm", "cookies", "dnd", "search", "types", "hotkeys", "contextmenu", "checkbox"],
+
+                    //contextmenu
+                    "contextmenu": {
+                        items: { // Could be a function that should return an object like this one
+                            "create": {
+                                "separator_before": true,
+                                "separator_after": true,
+                                "label": "Create",
+                                "action": false,
+                                "submenu": {
+                                    "create_file": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "File",
+                                        action: function(obj) {
+                                            this.create(obj, "last", {
+                                                "attr": {
+                                                    "rel": "default"
+                                                }
+                                            });
+                                        }
+                                    },
+                                    "create_folder": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Folder",
+                                        action: function(obj) {
+                                            this.create(obj, "last", {
+                                                "attr": {
+                                                    "rel": "folder"
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                }
+                            },
+                            "ccp": {
+                                "separator_before": false,
+                                "separator_after": true,
+                                "label": "Edit",
+                                "action": false,
+                                "submenu": {
+                                    "cut": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Cut",
+                                        action: function(obj) {
+                                            this.cut(obj, "last", {
+                                                "attr": {
+                                                    "rel": "default"
+                                                }
+                                            });
+                                        }
+                                    },
+                                    "paste": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Paste",
+                                        action: function(obj) {
+                                            this.paste(obj, "last", {
+                                                "attr": {
+                                                    "rel": "folder"
+                                                }
+                                            });
+                                        }
+                                    },
+
+                                    "changeType": {
+                                        "seperator_before": false,
+                                        "seperator_after": false,
+                                        "label": "Change Type",
+                                        "submenu": {
+                                            "toFile": {
+                                                "seperator_before": false,
+                                                "seperator_after": false,
+                                                "label": "toFile",
+                                                action: function(obj) {
+                                                    this.set_type("default");
+                                                }
+                                            },
+                                            "toFolder": {
+                                                "seperator_before": false,
+                                                "seperator_after": false,
+                                                "label": "toFolder",
+                                                action: function(obj) {
+                                                    this.set_type("folder");
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+                        }
+                    },
+
+                    // I usually configure the plugin that handles the data first
+                    // This example uses JSON as it is most common
+                    "json_data": {
+                        // This tree is ajax enabled - as this is most common, and maybe a bit more complex
+                        // All the options are almost the same as jQuery's AJAX (read the docs)
+                        "ajax": {
+                            // the URL to fetch the data
+                            "url": isDevelopingToRoute + "/api/arms/pdService/getChildNode.do",
+                            // the `data` function is executed in the instance's scope
+                            // the parameter is the node being loaded
+                            // (may be -1, 0, or undefined when loading the root nodes)
+                            "data": function(n) {
+                                // the result is fed to the AJAX request `data` option
+                                console.log(n);
+                                return {
+                                    "c_id": n.attr ? n.attr("id").replace("node_", "").replace("copy_", "") : 1
+                                };
+                            },
+                            "success": function(n) {
+                                jSuccess('access good');
+                            }
+                        }
+                    },
+                    // Configuring the search plugin
+                    "search": {
+                        // As this has been a common question - async search
+                        // Same as above - the `ajax` config option is actually jQuery's AJAX object
+                        "ajax": {
+                            "url": isDevelopingToRoute + "/api/arms/pdService/searchNode.do",
+                            // You get the search string as a parameter
+                            "data": function(str) {
+                                return {
+                                    "searchString": str
+                                };
+                            },
+                            "success": function(n) {
+                                jSuccess('search data complete');
+                            }
+                        }
+                    },
+                    // Using types - most of the time this is an overkill
+                    // read the docs carefully to decide whether you need types
+                    "types": {
+                        // I set both options to -2, as I do not need depth and children count checking
+                        // Those two checks may slow jstree a lot, so use only when needed
+                        "max_depth": -2,
+                        "max_children": -2,
+                        // I want only `drive` nodes to be root nodes
+                        // This will prevent moving or creating any other type as a root node
+                        "valid_children": ["drive"],
+                        "types": {
+                            // The default type
+                            "default": {
+                                // I want this type to have no children (so only leaf nodes)
+                                // In my case - those are files
+                                "valid_children": "none",
+                                // If we specify an icon for the default type it WILL OVERRIDE the theme icons
+                                "icon": {
+                                    "image": "../dist/js/jstree-v.pre1.0/themes/attibutes.png"
+                                }
+                            },
+                            // The `folder` type
+                            "folder": {
+                                // can have files and other folders inside of it, but NOT `drive` nodes
+                                "valid_children": ["default", "folder"],
+                                "icon": {
+                                    "image": "../dist/js/jstree-v.pre1.0/themes/ic_explorer.png"
+                                }
+                            },
+                            // The `drive` nodes
+                            "drive": {
+                                // can have files and folders inside, but NOT other `drive` nodes
+                                "valid_children": ["default", "folder"],
+                                "icon": {
+                                    "image": "../dist/js/jstree-v.pre1.0/themes/home.png"
+                                },
+                                // those prevent the functions with the same name to be used on `drive` nodes
+                                // internally the `before` event is used
+                                "start_drag": false,
+                                "move_node": false,
+                                "delete_node": false,
+                                "remove": false
+                            }
+                        }
+                    },
+                    // UI & core - the nodes to initially select and open will be overwritten by the cookie plugin
+
+                    // the UI plugin - it handles selecting/deselecting/hovering nodes
+                    "ui": {
+                        // this makes the node with ID node_4 selected onload
+                        "initially_select": ["node_4"]
+                    },
+                    // the core plugin - not many options here
+                    "core": {
+                        // just open those two nodes up
+                        // as this is an AJAX enabled tree, both will be downloaded from the server
+                        "initially_open": ["node_2", "node_3"]
+                    }
+                }).bind("create.jstree", function(e, data) {
+                    $.post(isDevelopingToRoute + "/api/arms/pdService/addNode.do", {
+                        "ref": data.rslt.parent.attr("id").replace("node_", "").replace("copy_", ""),
+                        "c_position": data.rslt.position,
+                        "c_title": data.rslt.name,
+                        "c_type": data.rslt.obj.attr("rel")
+                    }, function(r) {
+                        if (r.status) {
+                            $(data.rslt.obj).attr("id", "node_" + r.id);
+                            jNotify('Notification : <strong>Add Node</strong>, Complete !');
+                        } else {
+                            $.jstree.rollback(data.rlbk);
+                        }
+                        if (typeof Chat != "undefined"){
+                            Chat.sendMessage("노드를 추가했습니다. 추가된 노드의 아이디는 " + r.id , function(data) {
+                                console.log(data);
+                            });
+                        }
+                        jsTreeBuild();
+                    });
+                }).bind("remove.jstree", function(e, data) {
+                    data.rslt.obj.each(function() {
+                        $.ajax({
+                            async: false,
+                            type: 'POST',
+                            url: isDevelopingToRoute + "/api/arms/pdService/removeNode.do",
+                            data: {
+                                "c_id": this.id.replace("node_", "").replace("copy_", "")
+                            },
+                            success: function(r) {
+                                jNotify('Notification : <strong>Remove Node</strong>, Complete !');
+                                if (typeof Chat != "undefined"){
+                                    Chat.sendMessage("노드를 삭제했습니다. 삭제된 노드의 아이디는 " + r.c_id , function(data) {
+                                        console.log(data);
+                                    });
+                                }
+                                jsTreeBuild();
+                            }
+                        });
+                    });
+                }).bind("rename.jstree", function(e, data) {
+                    $.post(isDevelopingToRoute + "/api/arms/pdService/alterNode.do", {
+                        "c_id": data.rslt.obj.attr("id").replace("node_", "").replace("copy_", ""),
+                        "c_title": data.rslt.new_name,
+                        "c_type": data.rslt.obj.attr("rel")
+                    }, function(r) {
+                        if (!r.status) {
+                            $.jstree.rollback(data.rlbk);
+                        }
+                        jSuccess('Rename Node Complete');
+                        if (typeof Chat != "undefined"){
+                            Chat.sendMessage("노드를 변경했습니다. 변경된 노드의 아이디는 " + r.c_id , function(data) {
+                                console.log(data);
+                            });
+                        }
+                        jsTreeBuild();
+                    });
+                }).bind("set_type.jstree", function(e, data) {
+                    $.post(isDevelopingToRoute + "/api/arms/pdService/alterNodeType.do", {
+                        "c_id": data.rslt.obj.attr("id").replace("node_", "").replace("copy_", ""),
+                        "c_title": data.rslt.new_name,
+                        "c_type": data.rslt.obj.attr("rel")
+                    }, function(r) {
+                        jSuccess('Node Type Change');
+                        if (typeof Chat != "undefined"){
+                            Chat.sendMessage("노드를 변경했습니다. 변경된 노드의 아이디는 " + r.c_id , function(data) {
+                                console.log(data);
+                            });
+                        }
+                        jsTreeBuild();
+                    });
+                }).bind("move_node.jstree", function(e, data) {
+                    data.rslt.o.each(function(i) {
+                        $.ajax({
+                            async: false,
+                            type: 'POST',
+                            url: isDevelopingToRoute + "/api/arms/pdService/moveNode.do",
+                            data: {
+                                "c_id": $(this).attr("id").replace("node_", "").replace("copy_", ""),
+                                "ref": data.rslt.cr === -1 ? 1 : data.rslt.np.attr("id").replace("node_", "").replace("copy_", ""),
+                                "c_position": data.rslt.cp + i,
+                                "c_title": data.rslt.name,
+                                "copy": data.rslt.cy ? 1 : 0,
+                                "multiCounter": i
+                            },
+                            success: function(r) {
+                                if (r.status) {
+                                    $.jstree.rollback(data.rlbk);
+                                } else {
+                                    $(data.rslt.oc).attr("id", "node_" + r.id);
+                                    if (data.rslt.cy && $(data.rslt.oc).children("UL").length) {
+                                        data.inst.refresh(data.inst._get_parent(data.rslt.oc));
+                                    }
+                                }
+                                jNotify('Notification : <strong>Move Node</strong> Complete !');
+                                if (typeof Chat != "undefined"){
+                                    Chat.sendMessage("노드가 이동되었습니다. 이동된 노드의 아이디는 " + r.c_id , function(data) {
+                                        console.log(data);
+                                    });
+                                }
+                                jsTreeBuild();
+                            }
+                        });
+                    });
+                }).bind("select_node.jstree", function (event, data) {
+                    // `data.rslt.obj` is the jquery extended node that was clicked
+                    if ($.isFunction(jsTreeClick)) {
+                        console.log(data.rslt.obj);
+                        jsTreeClick(data.rslt.obj.attr("id"));
+                    }
+                });
+
+                $("#mmenu input, #mmenu button").click(function() {
+                    switch (this.id) {
+                        case "add_default":
+                        case "add_folder":
+                            $("#demo").jstree("create", null, "last", {
+                                "attr": {
+                                    "rel": this.id.toString().replace("add_", "")
+                                }
+                            });
+                            break;
+                        case "search":
+                            $("#demo").jstree("search", document.getElementById("text").value);
+                            //$("#jstreeTable_filter").find('input[type="search"]').val();
+                            $('#jstreeTable').DataTable().column(6).search(document.getElementById("text").value).draw();
+                            break;
+                        case "text":
+                            break;
+                        default:
+                            $("#demo").jstree(this.id);
+                            break;
+                    }
+                });
+            }
+
+            function jsTreeClick(selectedNodeID) {
+                console.log(selectedNodeID);
+            }
+
+            $(function() {
+                jsTreeBuild();
+            });
+            // Code for the menu buttons
+        </script>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="box box-primary" style="border-top-color: #bbbbbb; border-top-width: 0px">
+                <div class="box-header with-border">
+                    <i class="fa fa-edit"></i>
+                    <h3 class="box-title"><span style="font-size: 14px"><b>제품(서비스) 신규 등록</b></span></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="text" id="pdServiceTitle" class="form-control font13" placeholder="신규 등록 제품(서비스)">
+                    </div>
+                    <div class="form-group">
+                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                    </textarea>
+                    </div></div>
+                <div class="form-group">
+
+                    <div class="container2">
+                        <form
+                        id="fileupload"
+                        action="https://jquery-file-upload.appspot.com/"
+                        method="POST"
+                        enctype="multipart/form-data"
+                      >
+                        <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                        <noscript
+                          ><input
+                            type="hidden"
+                            name="redirect"
+                            value="https://blueimp.github.io/jQuery-File-Upload/"
+                        /></noscript>
+                        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                        <div class="row fileupload-buttonbar">
+                          <div class="col-lg-7">
+                            <!-- The fileinput-button span is used to style the file input field as button -->
+                            <span class="btn btn-success fileinput-button">
+                              <i class="glyphicon glyphicon-plus"></i>
+                              <span>Add files...</span>
+                              <input type="file" name="files[]" multiple />
+                            </span>
+                            <button type="submit" class="btn btn-primary start">
+                              <i class="glyphicon glyphicon-upload"></i>
+                              <span>Start upload</span>
+                            </button>
+                            <button type="reset" class="btn btn-warning cancel">
+                              <i class="glyphicon glyphicon-ban-circle"></i>
+                              <span>Cancel upload</span>
+                            </button>
+                            <button type="button" class="btn btn-danger delete">
+                              <i class="glyphicon glyphicon-trash"></i>
+                              <span>Delete selected</span>
+                            </button>
+                            <input type="checkbox" class="toggle" />
+                            <!-- The global file processing state -->
+                            <span class="fileupload-process"></span>
+                          </div>
+                          <!-- The global progress state -->
+                          <div class="col-lg-5 fileupload-progress fade">
+                            <!-- The global progress bar -->
+                            <div
+                              class="progress progress-striped active"
+                              role="progressbar"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                              <div
+                                class="progress-bar progress-bar-success"
+                                style="width: 0%;"
+                              ></div>
+                            </div>
+                            <!-- The extended global progress state -->
+                            <div class="progress-extended">&nbsp;</div>
+                          </div>
+                        </div>
+                        <!-- The table listing the files available for upload/download -->
+                        <table role="presentation" class="table table-striped">
+                          <tbody class="files"></tbody>
+                        </table>
+                      </form>
+                    </div>
+                    <!-- The blueimp Gallery widget -->
+                    <div
+                      id="blueimp-gallery"
+                      class="blueimp-gallery blueimp-gallery-controls"
+                      aria-label="image gallery"
+                      aria-modal="true"
+                      role="dialog"
+                      data-filter=":even"
+                    >
+                      <div class="slides" aria-live="polite"></div>
+                      <h3 class="title"></h3>
+                      <a
+                        class="prev"
+                        aria-controls="blueimp-gallery"
+                        aria-label="previous slide"
+                        aria-keyshortcuts="ArrowLeft"
+                      ></a>
+                      <a
+                        class="next"
+                        aria-controls="blueimp-gallery"
+                        aria-label="next slide"
+                        aria-keyshortcuts="ArrowRight"
+                      ></a>
+                      <a
+                        class="close"
+                        aria-controls="blueimp-gallery"
+                        aria-label="close"
+                        aria-keyshortcuts="Escape"
+                      ></a>
+                      <a
+                        class="play-pause"
+                        aria-controls="blueimp-gallery"
+                        aria-label="play slideshow"
+                        aria-keyshortcuts="Space"
+                        aria-pressed="false"
+                        role="button"
+                      ></a>
+                      <ol class="indicator"></ol>
+                    </div>
+                    <!-- The template to display files available for upload -->
+                    <script id="template-upload" type="text/x-tmpl">
+                      {% for (var i=0, file; file=o.files[i]; i++) { %}
+                          <tr class="template-upload fade{%=o.options.loadImageFileTypes.test(file.type)?' image':''%}">
+                              <td>
+                                  <span class="preview"></span>
+                              </td>
+                              <td>
+                                  <p class="name">{%=file.name%}</p>
+                                  <strong class="error text-danger"></strong>
+                              </td>
+                              <td>
+                                  <p class="size">Processing...</p>
+                                  <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+                              </td>
+                              <td>
+                                  {% if (!o.options.autoUpload && o.options.edit && o.options.loadImageFileTypes.test(file.type)) { %}
+                                    <button class="btn btn-success edit" data-index="{%=i%}" disabled>
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                        <span>Edit</span>
+                                    </button>
+                                  {% } %}
+                                  {% if (!i && !o.options.autoUpload) { %}
+                                      <button class="btn btn-primary start" disabled>
+                                          <i class="glyphicon glyphicon-upload"></i>
+                                          <span>Start</span>
+                                      </button>
+                                  {% } %}
+                                  {% if (!i) { %}
+                                      <button class="btn btn-warning cancel">
+                                          <i class="glyphicon glyphicon-ban-circle"></i>
+                                          <span>Cancel</span>
+                                      </button>
+                                  {% } %}
+                              </td>
+                          </tr>
+                      {% } %}
+                    </script>
+                    <!-- The template to display files available for download -->
+                    <script id="template-download" type="text/x-tmpl">
+                      {% for (var i=0, file; file=o.files[i]; i++) { %}
+                          <tr class="template-download fade{%=file.thumbnailUrl?' image':''%}">
+                              <td>
+                                  <span class="preview">
+                                      {% if (file.thumbnailUrl) { %}
+                                          <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                                      {% } %}
+                                  </span>
+                              </td>
+                              <td>
+                                  <p class="name">
+                                      {% if (file.url) { %}
+                                          <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                                      {% } else { %}
+                                          <span>{%=file.name%}</span>
+                                      {% } %}
+                                  </p>
+                                  {% if (file.error) { %}
+                                      <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+                                  {% } %}
+                              </td>
+                              <td>
+                                  <span class="size">{%=o.formatFileSize(file.size)%}</span>
+                              </td>
+                              <td>
+                                  {% if (file.deleteUrl) { %}
+                                      <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                                          <i class="glyphicon glyphicon-trash"></i>
+                                          <span>Delete</span>
+                                      </button>
+                                      <input type="checkbox" name="delete" value="1" class="toggle">
+                                  {% } else { %}
+                                      <button class="btn btn-warning cancel">
+                                          <i class="glyphicon glyphicon-ban-circle"></i>
+                                          <span>Cancel</span>
+                                      </button>
+                                  {% } %}
+                              </td>
+                          </tr>
+                      {% } %}
+                    </script>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default font13"><i class="fa fa-pencil"></i> Draft</button>
+                    <button type="submit" class="btn btn-primary font13" id="submit"><i class="fa fa-envelope-o"></i> Send</button>
+                </div>
+                <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Discard</button>
+            </div>
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+<script>
+
+    $(function () {
+        //Add text editor
+        $("#compose-textarea").wysihtml5();
+
+        $( "#submit" ).click(function() {
+          $.post("/auth-user/api/arms/pdService/addNode.do", {
+              "ref": 2,
+              "c_position": 0,
+              "c_title": $("#pdServiceTitle").val(),
+              "c_type": "default",
+              "c_pdservice_detail": $("#compose-textarea").val()
+          }, function(r) {
+              if (r.status) {
+                  jNotify('Notification : <strong>Add Node</strong>, Complete !');
+              } else {
+                  jNotify('Notification : <strong>Add Node</strong>, ERROR !')
+              }
+              if (typeof Chat != "undefined"){
+                  Chat.sendMessage("노드를 추가했습니다. 추가된 노드의 아이디는 " + r.id , function(data) {
+                      console.log(data);
+                  });
+              }
+              jsTreeBuild();
+          });
+        });
+    });
+
+</script>
