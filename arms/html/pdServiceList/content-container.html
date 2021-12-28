@@ -1,0 +1,98 @@
+<div class="col-lg-12">
+    <section class="widget">
+        <header>
+            <h4>
+                <span class="font13" style="font-weight: bold;">
+                    <i class="fa fa-edit"></i> 제품(서비스) 신규 등록
+                </span>
+            </h4>
+            <div class="widget-controls">
+                <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                <a data-widgster="collapse" title="Collapse" href="#"><i
+                        class="glyphicon glyphicon-chevron-down"></i></a>
+                <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+            </div>
+        </header>
+        <div class="body">
+            <blockquote class="font13">
+                Column sorting, live search, pagination. Built with
+                <a href="http://www.datatables.net/" target="_blank">jQuery DataTables</a>
+            </blockquote>
+            <div class="box box-primary" style="background: rgba(51, 51, 51, 0.225); margin-bottom: 35px !important;">
+                <div class="box-body">
+                    <table id="jstreeTable" class="display responsive no-wrap" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>c_id</th>
+                            <th>c_parentid</th>
+                            <th>c_position</th>
+                            <th>c_left</th>
+                            <th>c_right</th>
+                            <th>c_level</th>
+                            <th>c_title</th>
+                            <th>c_type</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- page application js -->
+<script src="../reference/lightblue4/docs/js/index.js"></script>
+<script src="../reference/lightblue4/docs/js/chat.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+
+    function jstreeDataTableReload() {
+
+        console.log("href: "+$(location).attr('href'));
+        console.log("protocol: "+$(location).attr('protocol'));
+        console.log("host: "+$(location).attr('host'));
+        console.log("pathname: "+$(location).attr('pathname'));
+        console.log("search: "+$(location).attr('search'));
+        console.log("hostname: "+$(location).attr('hostname'));
+        console.log("port: "+$(location).attr('port'));
+
+        var isDevelopingToRoute = "/auth-anon";
+
+        var tempDataTable = $('#jstreeTable').DataTable({
+            "ajax": {
+                "url": isDevelopingToRoute + "/com/ext/jstree/springHibernate/core/getMonitor.do",
+                "dataSrc": ""
+            },
+            "destroy": true,
+            "processing": true,
+            "responsive": true,
+            "columns": [
+                { "data": "c_id" },
+                { "data": "c_parentid" },
+                { "data": "c_position" },
+                { "data": "c_left" },
+                { "data": "c_right" },
+                { "data": "c_level" },
+                { "data": "c_title" },
+                { "data": "c_type" }
+            ]
+        });
+
+        $('#jstreeTable tbody').on('click', 'tr', function () {
+            var data = tempDataTable.row( this ).data();
+            console.log(data);
+            alert( 'You clicked on '+ data.c_title +'\'s row' );
+        } );
+
+    }
+
+    $(function() {
+        jstreeDataTableReload();
+    });
+
+    //]]>
+</script>
+
+
