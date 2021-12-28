@@ -283,6 +283,17 @@ table.dataTable td {
 }
 .dataTables_wrapper .dataTables_filter input {
     margin-left: 0.5em;
+    color: #f8f8f8;
+    border: none;
+    background: url(../../../../lightblue4/docs/img/search-white.png) 5px 5px no-repeat rgba(51, 51, 51, 0.4);
+    padding-left: 26px;
+    -webkit-transition: width 0.2s;
+    -o-transition: width 0.2s;
+    transition: width 0.2s;
+    width: 200px;
+    border-radius: 3px;
+    line-height: 18px;
+    min-height: 30px;
 }
 .dataTables_wrapper .dataTables_info {
     clear: both;
@@ -307,11 +318,11 @@ table.dataTable td {
     color: #f8f8f8 !important;
     border: 1px solid transparent;
     border-radius: 2px;
-    background: rgba(131, 131, 131, 0.5);
+    background: rgba(100, 100, 100, 0.5);
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     color: #f8f8f8 !important;
-    background-color: #999;
+    background-color: #484848;
     border-color: rgba(0, 0, 0, 0.15);
     /*border: 1px solid #979797;
     background-color: white;
@@ -333,7 +344,7 @@ table.dataTable td {
     color: #f8f8f8 !important;
     border: 1px solid transparent;
     box-shadow: none;
-    background-color: #999;
+    background-color: #484848;
     border-color: rgba(0, 0, 0, 0.15);
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {

@@ -3,7 +3,7 @@
         <header>
             <h4>
                 <span class="font13" style="font-weight: bold;">
-                    <i class="fa fa-edit"></i> 제품(서비스) 신규 등록
+                    <i class="fa fa-edit"></i> 제품(서비스) 리스트
                 </span>
             </h4>
             <div class="widget-controls">
@@ -16,10 +16,9 @@
         </header>
         <div class="body">
             <blockquote class="font13">
-                Column sorting, live search, pagination. Built with
-                <a href="http://www.datatables.net/" target="_blank">jQuery DataTables</a>
+                리스트 목록을 선택하면 제품(서비스)의 등록 내용을 확인/변경 할 수 있습니다.
             </blockquote>
-            <div class="box box-primary" style="background: rgba(51, 51, 51, 0.225); margin-bottom: 35px !important;">
+            <div class="box box-primary" style="background: rgba(51, 51, 51, 0.225); margin-bottom: 5px !important;">
                 <div class="box-body">
                     <table id="jstreeTable" class="display responsive no-wrap" cellspacing="0">
                         <thead>
@@ -36,6 +35,9 @@
                         </thead>
                     </table>
                 </div>
+            </div>
+            <div class="modal-footer" style="background-color: transparent; padding: 5px; text-align: right; border-top: 0px;">
+                <button type="button" class="btn btn-primary">Select View</button>
             </div>
         </div>
     </section>
@@ -68,6 +70,7 @@
             "destroy": true,
             "processing": true,
             "responsive": true,
+            "select": true,
             "columns": [
                 { "data": "c_id" },
                 { "data": "c_parentid" },
@@ -90,6 +93,10 @@
 
     $(function() {
         jstreeDataTableReload();
+
+        $('.dataTables_length').find('select:eq(0)').addClass("darkBack");
+        $('.dataTables_length').find('select:eq(0)').css('min-height','30px');
+        //min-height: 30px;
     });
 
     //]]>
