@@ -31,7 +31,7 @@
     "grunt-serve": "^0.1.6",
     "grunt-text-replace": "^0.4.0",
     "less": "^3",
-    "serve-static": "^1.14.1"
+    "serve-static": "^1.14.2"
   },
   "dependencies": {
     "bootstrap": "^3.4",

@@ -61,22 +61,29 @@
                 <p class="pull-right" style="padding-top: 10px;"><a class="btn btn-info" id="show-info-message" href="#">제품(서비스) 등록</a></p>
                 <p class="pull-right" style="padding-top: 10px; padding-right: 10px;">
                     <button type="button" class="btn btn-success"
-                            data-toggle="modal" data-target="#myModal2">Launch blocking modal</button>
+                            data-toggle="modal" data-target="#myModal2">새창으로 편집</button>
                 </p>
                 <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog" style="width: 90%; height: 90%">
                         <div class="modal-content darkBack">
 
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel2">Modal Heading</h4>
+                            <div class="modal-header" style="padding: 0px; border-bottom: 0px">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style=" color: #ffffff; font-size: 20px; opacity: 0.8; padding: 5px;">×</button>
+                                <h4 class="modal-title font14" id="myModalLabel2" style="color: #f8f8f8;text-align: left; padding: 5px;">
+                                    <span class="font13" style="font-weight: bold;">
+                                        <i class="fa fa-edit"></i> 제품(서비스) 신규 등록 팝업
+                                    </span>
+                                    <section class="search-result" style="border-left: 5px solid #e5603b;">
+                                        <p style="font-size: 13px; margin: 5px 0px 0px 0px; padding-left: 5px;"> 입력한 내용은 부모창과 동기화 됩니다. 부모창에서 등록하기를 진행해야 저장됩니다.</p>
+                                    </section>
+                                </h4>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" style="padding: 5px;">
                                 <div id="modal-editor" class="darkBack">
                                     <p>입력란이 좁다면 하단에 새창으로 띄우기를 클릭하세요.</p>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer" style="background-color: transparent; padding: 5px; text-align: right; border-top: 0px;">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
