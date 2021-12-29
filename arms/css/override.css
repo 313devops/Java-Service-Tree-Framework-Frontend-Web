@@ -329,3 +329,10 @@ body {
     line-height: 100px;
     vertical-align: middle;
 }
+
+.control-label {
+  float: left;
+  width: 160px;
+  padding-top: 5px;
+  text-align: right;
+}
