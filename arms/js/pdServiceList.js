@@ -12,7 +12,7 @@ $(function () {
 
 // 제품 상세 보기 클릭 이벤트
 $( "#selectView" ).click(function() {
-    location.href="pdServiceListUpdate.html";
+    location.href="pdServiceListView.html";
 });
 
 // --- 사이드 메뉴 설정 --- //
