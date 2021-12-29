@@ -37,63 +37,18 @@
                 </div>
             </div>
             <div class="modal-footer" style="background-color: transparent; padding: 5px; text-align: right; border-top: 0px;">
-                <button type="button" class="btn btn-primary">Select View</button>
+                <button id="selectView" type="button" class="btn btn-primary">Select View</button>
             </div>
         </div>
     </section>
 </div>
 
+<!-- page specific application js -->
 <script type="text/javascript" charset="utf-8">
     //<![CDATA[
 
-    function jstreeDataTableReload() {
-
-        console.log("href: "+$(location).attr('href'));
-        console.log("protocol: "+$(location).attr('protocol'));
-        console.log("host: "+$(location).attr('host'));
-        console.log("pathname: "+$(location).attr('pathname'));
-        console.log("search: "+$(location).attr('search'));
-        console.log("hostname: "+$(location).attr('hostname'));
-        console.log("port: "+$(location).attr('port'));
-
-        var isDevelopingToRoute = "/auth-anon";
-
-        var tempDataTable = $('#jstreeTable').DataTable({
-            "ajax": {
-                "url": isDevelopingToRoute + "/com/ext/jstree/springHibernate/core/getMonitor.do",
-                "dataSrc": ""
-            },
-            "destroy": true,
-            "processing": true,
-            "responsive": true,
-            "select": true,
-            "columns": [
-                { "data": "c_id" },
-                { "data": "c_parentid" },
-                { "data": "c_position" },
-                { "data": "c_left" },
-                { "data": "c_right" },
-                { "data": "c_level" },
-                { "data": "c_title" },
-                { "data": "c_type" }
-            ]
-        });
-
-        $('#jstreeTable tbody').on('click', 'tr', function () {
-            var data = tempDataTable.row( this ).data();
-            console.log(data);
-            //alert( 'You clicked on '+ data.c_title +'\'s row' );
-        } );
-
-    }
-
-    $(function() {
-        jstreeDataTableReload();
-
-        $('.dataTables_length').find('select:eq(0)').addClass("darkBack");
-        $('.dataTables_length').find('select:eq(0)').css('min-height','30px');
-        //min-height: 30px;
-    });
+    // 초기 개발 및 확인 용도
 
     //]]>
 </script>
+<script type="text/javascript" src='js/pdServiceList.js' charset="utf-8"></script>
