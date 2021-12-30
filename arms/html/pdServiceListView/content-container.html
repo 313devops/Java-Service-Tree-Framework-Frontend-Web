@@ -91,25 +91,15 @@
     </section>
 </div>
 
-<!-- page specific application js -->
+<!-- page specific application css/js -->
+<style type="text/css">
+
+</style>
 <script type="text/javascript" charset="utf-8">
     //<![CDATA[
 
     // 초기 개발 및 확인 용도
     $(function () {
-
-        // --- 에디터 설정 --- //
-        CKEDITOR.replace( 'editor' );
-        CKEDITOR.config.readOnly = true;
-        CKEDITOR.on('instanceReady', function(ev) {
-            var height = $( document ).height() -450;
-            $('.cke_contents').css('height',height+'px');
-        });
-
-        // 제품 상세 보기 클릭 이벤트
-        $( "#selectList" ).click(function() {
-            location.href="pdServiceList.html";
-        });
 
     });
 

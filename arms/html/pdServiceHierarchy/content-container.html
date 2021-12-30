@@ -1,34 +1,49 @@
-// --- 사이드 메뉴 -- //
-$(function () {
-    setSideMenu();
-});
+<div class="col-lg-6">
+    <section class="widget">
+        <header>
+            <h4>
+                <span class="font13" style="font-weight: bold;">
+                    <i class="fa fa-sort-amount-asc"></i> 제품(서비스) 조회
+                </span>
+            </h4>
+            <div class="actions">
+                <button class="btn btn-transparent btn-xs" onclick="$('#demo').jstree('open_all');">Show All
+                    <i class="fa fa-arrow-down"></i>
+                </button>
+            </div>
+        </header>
+        <div class="body">
+            <div class="wrapper">
+                <div id="mmenu" style="padding-bottom: 5px;">
+                    <form class="form-search no-margin" role="form">
+                        <div class="input-group">
+                            <input type="search" id="text" class="form-control searchDarkBack" style="color: #f8f8f8;" placeholder="찾을 노드 이름 입력" data-tooltip="Press Enter To Node To Search">
+                            <span class="input-group-btn">
+                                <button type="button" id="search" title="Search" class="btn btn-default btn-sm">
+                                    Search
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div id="demo" style="padding-top: 5px" class="darkBack"></div>
+            </div>
+        </div>
+    </section>
+</div>
 
-function setSideMenu() {
-    setTimeout(function(){
-        $('#sidebar_menu_product').attr("class","accordion-toggle active");
-        $('#sidebar_menu_product').attr("aria-expanded","true");
-        $('#sidebar_menu_product').css({'color':'lightblue'});
-        $('#sidebar_menu_product').css({'font-weight':'900'});
+<div class="col-lg-6">
+</div>
 
-        $('#product-elements-collapse').attr("class","panel-collapse collapse in");
-        $('#product-elements-collapse').attr("aria-expanded","true");
+<!-- page specific application css/js -->
+<style type="text/css">
 
-        $('#sidebar_menu_product_regist').addClass("active");
-        $('#sidebar_menu_product_regist').css({'color':'lightblue'});
-        $('#sidebar_menu_product_regist').css({'font-weight':'900'});
-    },1000);
-}
+</style>
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
 
-// --- 에디터 설정 --- //
-CKEDITOR.replace( 'editor' );
-CKEDITOR.replace( 'modal-editor' );
-
-// --- 팝업 띄울때 사이즈 조정 -- //
-$( "#modalPopupId" ).click(function() {
-    var height = $( document ).height() -400;
-    $('.modal-body').find('.cke_contents:eq(0)').css('height',height+'px');
-});
-
+    // 초기 개발 및 확인 용도
+    $(function () {
 // --- jstree 설정 -- //
 function jsTreeBuild(){
 
@@ -390,103 +405,9 @@ $(function() {
     jsTreeBuild();
 });
 
-// --- select2 설정 --- //
-$(".js-example-basic-multiple-limit").select2({
-    maximumSelectionLength: 2,
-    ajax: {
-        url: "https://api.github.com/search/repositories",
-        dataType: 'json',
-        delay: 250,
-        data: function (params) {
-            return {
-                q: params.term, // search term
-                page: params.page
-            };
-        },
-        processResults: function (data, params) {
-            // parse the results into the format expected by Select2
-            // since we are using custom formatting functions we do not need to
-            // alter the remote JSON data, except to indicate that infinite
-            // scrolling can be used
-            params.page = params.page || 1;
+    });
 
-            return {
-                results: data.items,
-                pagination: {
-                    more: (params.page * 30) < data.total_count
-                }
-            };
-        },
-        cache: true
-    },
-    placeholder: '제품(서비스)의 오너를 등록해 주세요',
-    minimumInputLength: 1,
-    templateResult: formatRepo,
-    templateSelection: formatRepoSelection
-});
-
-$(".js-data-example-ajax").select2({
-    ajax: {
-        url: "https://api.github.com/search/repositories",
-        dataType: 'json',
-        delay: 250,
-        data: function (params) {
-            return {
-                q: params.term, // search term
-                page: params.page
-            };
-        },
-        processResults: function (data, params) {
-            // parse the results into the format expected by Select2
-            // since we are using custom formatting functions we do not need to
-            // alter the remote JSON data, except to indicate that infinite
-            // scrolling can be used
-            params.page = params.page || 1;
-
-            return {
-                results: data.items,
-                pagination: {
-                    more: (params.page * 30) < data.total_count
-                }
-            };
-        },
-        cache: true
-    },
-    placeholder: '제품(서비스)의 Default 리뷰어를 등록해 주세요',
-    minimumInputLength: 1,
-    templateResult: formatRepo,
-    templateSelection: formatRepoSelection
-});
-
-function formatRepo (repo) {
-    if (repo.loading) {
-        return repo.text;
-    }
-
-    var $container = $(
-        "<div class='select2-result-repository clearfix'>" +
-        "<div class='select2-result-repository__meta'>" +
-        "<div class='select2-result-repository__title'></div>" +
-        "<div class='select2-result-repository__description'></div>" +
-        "<div class='select2-result-repository__statistics'>" +
-        "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> </div>" +
-        "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> </div>" +
-        "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> </div>" +
-        "</div>" +
-        "</div>" +
-        "</div>"
-    );
-
-    $container.find(".select2-result-repository__title").text(repo.full_name);
-    $container.find(".select2-result-repository__description").text(repo.description);
-    $container.find(".select2-result-repository__forks").append(repo.forks_count + " Forks");
-    $container.find(".select2-result-repository__stargazers").append(repo.stargazers_count + " Stars");
-    $container.find(".select2-result-repository__watchers").append(repo.watchers_count + " Watchers");
-
-    return $container;
-}
-
-function formatRepoSelection (repo) {
-    return repo.full_name || repo.text;
-}
-// Code for the menu buttons
+    //]]>
+</script>
+<script src="../reference/light-blue/js/fileupload.js"></script>
+<script type="text/javascript" src='js/pdServiceHierarchy.js' charset="utf-8"></script>
