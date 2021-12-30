@@ -56,12 +56,12 @@
                             <label class="control-label" for="prepended-input">제품(서비스) 등록 모드 &nbsp;</label>
                             <div class="controls form-group" style="margin-bottom: 10px;">
                                 <div class="input-group col-sm-8" style="text-align: left;">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-gift"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-sliders"></i></span>
                                     <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-transparent btn-sm">
+                                        <label class="btn btn-transparent btn-sm active">
                                             <input type="radio"> 신규 등록 모드
                                         </label>
-                                        <label class="btn btn-transparent btn-sm active">
+                                        <label class="btn btn-transparent btn-sm">
                                             <input type="radio"> 업데이트 모드
                                         </label>
                                     </div>
@@ -90,7 +90,7 @@
                             <label class="control-label" for="prepended-input">제품(서비스) 리뷰어 &nbsp;</label>
                             <div class="controls form-group" style="margin-bottom: 10px;">
                                 <div class="input-group col-sm-8">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
                                     <select class="js-example-basic-multiple-limit js-states form-control font13 darkBack" multiple=""></select>
                                 </div>
                             </div>
@@ -180,7 +180,24 @@
     </section>
 </div>
 
-
+<style>
+.btn-transparent.active {
+    color: white;
+    background: rgba(51, 51, 51, 0.55);
+    color: #ffffff;
+    background-color: #e5603b;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+.btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.select2-search__field::-webkit-input-placeholder,
+.select2-search__field::placeholder {
+    color: #999 !important;
+    padding-left: 6px;
+}
+</style>
 <!-- page specific application js -->
 <script type="text/javascript" charset="utf-8">
     //<![CDATA[
@@ -216,7 +233,7 @@
             },
             cache: true
           },
-          placeholder: 'Search for a repository',
+          placeholder: '제품(서비스)의 오너를 등록해 주세요',
           minimumInputLength: 1,
           templateResult: formatRepo,
           templateSelection: formatRepoSelection
@@ -249,7 +266,7 @@
             },
             cache: true
           },
-          placeholder: 'Search for a repository',
+          placeholder: '제품(서비스)의 Default 리뷰어를 등록해 주세요',
           minimumInputLength: 1,
           templateResult: formatRepo,
           templateSelection: formatRepoSelection
