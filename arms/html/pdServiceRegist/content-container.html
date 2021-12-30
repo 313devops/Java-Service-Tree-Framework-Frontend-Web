@@ -37,7 +37,7 @@
         <header>
             <h4>
                 <span class="font13" style="font-weight: bold;">
-                    <i class="fa fa-edit"></i> 제품(서비스) 신규 등록
+                    <i class="fa fa-edit"></i> 제품(서비스) 등록 / 변경
                 </span>
             </h4>
             <div class="widget-controls">
@@ -51,22 +51,47 @@
         <div class="body">
             <div class="box box-primary" style="border-top-color: #bbbbbb; border-top-width: 0px; margin-bottom: 35px !important;">
                 <div class="box-body">
-                    <div class="form-group" style="margin-bottom: 7px;">
+                    <div class="form-group">
+                        <div class="control-group">
+                            <label class="control-label" for="prepended-input">제품(서비스) 등록 모드 &nbsp;</label>
+                            <div class="controls form-group" style="margin-bottom: 10px;">
+                                <div class="input-group col-sm-8" style="text-align: left;">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-gift"></i></span>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-transparent btn-sm">
+                                            <input type="radio"> 신규 등록 모드
+                                        </label>
+                                        <label class="btn btn-transparent btn-sm active">
+                                            <input type="radio"> 업데이트 모드
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <label class="control-label" for="prepended-input">제품(서비스) 이름 &nbsp;</label>
-                            <div class="controls form-group">
-                                <div class="input-group col-sm-6">
+                            <div class="controls form-group" style="margin-bottom: 10px;">
+                                <div class="input-group col-sm-8">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-gift"></i></span>
-                                    <input id="prepended-input" class="form-control font13 darkBack" size="16" type="text" placeholder="제품(서비스)명을 입력해 주세요">
+                                    <input id="prepended-input" class="form-control font13 darkBack" style="color: #f8f8f8;" size="16" type="text" placeholder="제품(서비스)명을 입력해 주세요">
                                 </div>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="prepended-input">제품(서비스) 오너 &nbsp;</label>
-                            <div class="controls form-group">
-                                <div class="input-group col-sm-6">
+                            <div class="controls form-group" style="margin-bottom: 10px;">
+                                <div class="input-group col-sm-8">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input id="prepended-input" class="form-control font13 darkBack" size="16" type="text" placeholder="Username">
+                                    <select class="js-data-example-ajax form-control font13 darkBack" placeholder="제품(서비스)의 관리자를 등록해 주세요"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="prepended-input">제품(서비스) 리뷰어 &nbsp;</label>
+                            <div class="controls form-group" style="margin-bottom: 10px;">
+                                <div class="input-group col-sm-8">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <select class="js-example-basic-multiple-limit js-states form-control font13 darkBack" multiple=""></select>
                                 </div>
                             </div>
                         </div>
@@ -161,6 +186,107 @@
     //<![CDATA[
 
     // 초기 개발 및 확인 용도
+    $(function () {
+
+        $(".js-example-basic-multiple-limit").select2({
+          maximumSelectionLength: 2,
+          ajax: {
+            url: "https://api.github.com/search/repositories",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+              return {
+                q: params.term, // search term
+                page: params.page
+              };
+            },
+            processResults: function (data, params) {
+              // parse the results into the format expected by Select2
+              // since we are using custom formatting functions we do not need to
+              // alter the remote JSON data, except to indicate that infinite
+              // scrolling can be used
+              params.page = params.page || 1;
+
+              return {
+                results: data.items,
+                pagination: {
+                  more: (params.page * 30) < data.total_count
+                }
+              };
+            },
+            cache: true
+          },
+          placeholder: 'Search for a repository',
+          minimumInputLength: 1,
+          templateResult: formatRepo,
+          templateSelection: formatRepoSelection
+        });
+
+        $(".js-data-example-ajax").select2({
+          ajax: {
+            url: "https://api.github.com/search/repositories",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+              return {
+                q: params.term, // search term
+                page: params.page
+              };
+            },
+            processResults: function (data, params) {
+              // parse the results into the format expected by Select2
+              // since we are using custom formatting functions we do not need to
+              // alter the remote JSON data, except to indicate that infinite
+              // scrolling can be used
+              params.page = params.page || 1;
+
+              return {
+                results: data.items,
+                pagination: {
+                  more: (params.page * 30) < data.total_count
+                }
+              };
+            },
+            cache: true
+          },
+          placeholder: 'Search for a repository',
+          minimumInputLength: 1,
+          templateResult: formatRepo,
+          templateSelection: formatRepoSelection
+        });
+
+        function formatRepo (repo) {
+          if (repo.loading) {
+            return repo.text;
+          }
+
+          var $container = $(
+            "<div class='select2-result-repository clearfix'>" +
+              "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "<div class='select2-result-repository__description'></div>" +
+                "<div class='select2-result-repository__statistics'>" +
+                  "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> </div>" +
+                  "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> </div>" +
+                  "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> </div>" +
+                "</div>" +
+              "</div>" +
+            "</div>"
+          );
+
+          $container.find(".select2-result-repository__title").text(repo.full_name);
+          $container.find(".select2-result-repository__description").text(repo.description);
+          $container.find(".select2-result-repository__forks").append(repo.forks_count + " Forks");
+          $container.find(".select2-result-repository__stargazers").append(repo.stargazers_count + " Stars");
+          $container.find(".select2-result-repository__watchers").append(repo.watchers_count + " Watchers");
+
+          return $container;
+        }
+
+        function formatRepoSelection (repo) {
+          return repo.full_name || repo.text;
+        }
+    });
 
     //]]>
 </script>
