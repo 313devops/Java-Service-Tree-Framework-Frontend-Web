@@ -43,11 +43,11 @@ function jstreeDataTableReload() {
     console.log("hostname: "+$(location).attr('hostname'));
     console.log("port: "+$(location).attr('port'));
 
-    var isDevelopingToRoute = "/auth-anon";
+    var isDevelopingToRoute = "/auth-user";
 
     var tempDataTable = $('#jstreeTable').DataTable({
         "ajax": {
-            "url": isDevelopingToRoute + "/com/ext/jstree/springHibernate/core/getMonitor.do",
+            "url": isDevelopingToRoute + "/api/arms/pdService/getMonitor.do",
             "dataSrc": ""
         },
         "destroy": true,
