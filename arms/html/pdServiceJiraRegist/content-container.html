@@ -53,8 +53,24 @@
         </header>
         <div class="body">
             <div class="box box-primary" style="border-top-color: #bbbbbb; border-top-width: 0px; margin-bottom: 35px !important;">
-                <div class="box-body" style="margin-bottom: -20px;">
-                    <div class="form-group" style="margin-bottom: 0px;">
+                <div class="box-body">
+                    <div class="form-group" style="margin-bottom: 0px; padding-top: 10px;">
+                        <div class="control-group">
+                            <label class="control-label" for="prepended-input">Jira 등록 모드 &nbsp;</label>
+                            <div class="controls form-group" style="margin-bottom: 10px;">
+                                <div class="input-group col-sm-8" style="text-align: left;">
+                                    <span class="input-group-addon"><i class="fa fa-sliders"></i></span>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-transparent btn-sm active">
+                                            <input type="radio"> 신규 등록 모드
+                                        </label>
+                                        <label class="btn btn-transparent btn-sm">
+                                            <input type="radio"> 업데이트 모드
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <label class="control-label" for="prepended-input">Jira 연결 이름 &nbsp;</label>
                             <div class="controls form-group" style="margin-bottom: 10px;">
@@ -67,7 +83,7 @@
                         <div class="control-group">
                             <label class="control-label" for="prepended-input">Jira 연결 Username &nbsp;</label>
                             <div class="controls form-group" style="margin-bottom: 10px;">
-                                <div class="input-group col-sm-8">
+                                <div class="input-group col-sm-8" style="text-align: left;">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <select class="js-data-example-ajax form-control font13 darkBack" placeholder="제품(서비스)의 관리자를 등록해 주세요"></select>
                                 </div>
@@ -116,77 +132,73 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <p class="pull-right" style="padding-right: 10px; margin-right: 10px;">
-                                <button type="button" class="btn btn-success" id="modalPopupId"
-                                        data-toggle="modal" data-target="#myModal2">Jira JQL Test</button>
-                            </p>
-                        </div>
-                        <div class="row" style="padding: 10px;">
-
-                            <section class="widget padding-increased" style="margin-bottom: 5px;text-align: left;">
-                                <header>
-                                    <h4>
-                                        Search Results
-                                    </h4>
-                                    <hr/>
-                                </header>
-                                <div class="body no-margin">
-                                    <section class="search-result">
-                                        <h4>Next generation admin template</h4>
-                                        <p class="text-success"><small>themeforest.com</small></p>
-                                        <p>Not just usual Metro. But something bigger. Not just usual widgets, but real widgets.
-                                            Not just yet another admin template, but next generation admin template.</p>
-                                    </section>
-                                    <section class="search-result">
-                                        <h4>Try. Posted by Okendoken</h4>
-                                        <p class="text-success"><small>okendoken.com</small></p>
-                                        <p>You will never know exactly how something will go until you try it.
-                                            You can think three hundred times and still have no precise result.</p>
-                                    </section>
-                                    <section class="search-result">
-                                        <h4>Can I use CSS3 Radial-Gradient?</h4>
-                                        <p class="text-success"><small>okendoken.com</small></p>
-                                        <p>Yes you can! Further more, you should! It let's you create really beautiful images
-                                        either for elements or for the entire background.</p>
-                                    </section>
-                                    <section class="search-result">
-                                        <h4>Element standards</h4>
-                                        <p class="text-success"><small>wikipedia.com</small></p>
-                                        <p>HTML elements are defined in a series of freely available open standards issued since
-                                            1995, initially by the IETF and subsequently by the W3C.</p>
-                                    </section>
-                                    <section class="search-result">
-                                        <h4>Vitaut the Great</h4>
-                                        <p class="text-success"><small>www.belarusguide.com</small></p>
-                                        <p>the Great Prince of the Grand Duchy of Lithuania he had stopped the invasion to Europe
-                                            of Timur (Tamerlan) from Asia heading a big Army of Belarusians, Lithuanians.</p>
-                                    </section>
-                                    <section class="search-result">
-                                        <h4>The origins of the Grand Duchy of Litva</h4>
-                                        <p class="text-success"><small>www.belarusguide.com</small></p>
-                                        <p>Who are the Belarusians, anyway? What is this strange country - Belarus - which appeared
-                                            on the map a few years ago, a country that used to be called Belorussia, Byelorussia or even White Russia?</p>
-                                    </section>
-                                    <div class="text-align-center">
-                                        <ul class="pagination">
-                                            <li class="disabled"><a href="#">Prev</a></li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </section>
-
-                        </div>
+                        <p class="pull-right" style="padding-top: 10px;"><a class="btn btn-info" id="show-info-message" href="#">Jira 등록</a></p>
+                        <p class="pull-right" style="padding-top: 10px; padding-right: 10px;">
+                            <button type="button" class="btn btn-success" id="modalPopupId"
+                                    data-toggle="modal" data-target="#myModal2">Jira JQL Test</button>
+                        </p>
                     </div>
                 </div>
-                <p class="pull-right" style="padding-top: 13px;"><a class="btn btn-info" id="show-info-message" href="#">Jira 등록</a></p>
             </div>
+        </div>
+        <div class="row" style="padding: 10px;">
+            <section class="widget padding-increased" style="margin-bottom: 5px;text-align: left;">
+                <header>
+                    <h4>
+                        Search Results
+                    </h4>
+                    <hr/>
+                </header>
+                <div class="body no-margin">
+                    <section class="search-result">
+                        <h4>Next generation admin template</h4>
+                        <p class="text-success"><small>themeforest.com</small></p>
+                        <p>Not just usual Metro. But something bigger. Not just usual widgets, but real widgets.
+                            Not just yet another admin template, but next generation admin template.</p>
+                    </section>
+                    <section class="search-result">
+                        <h4>Try. Posted by Okendoken</h4>
+                        <p class="text-success"><small>okendoken.com</small></p>
+                        <p>You will never know exactly how something will go until you try it.
+                            You can think three hundred times and still have no precise result.</p>
+                    </section>
+                    <section class="search-result">
+                        <h4>Can I use CSS3 Radial-Gradient?</h4>
+                        <p class="text-success"><small>okendoken.com</small></p>
+                        <p>Yes you can! Further more, you should! It let's you create really beautiful images
+                        either for elements or for the entire background.</p>
+                    </section>
+                    <section class="search-result">
+                        <h4>Element standards</h4>
+                        <p class="text-success"><small>wikipedia.com</small></p>
+                        <p>HTML elements are defined in a series of freely available open standards issued since
+                            1995, initially by the IETF and subsequently by the W3C.</p>
+                    </section>
+                    <section class="search-result">
+                        <h4>Vitaut the Great</h4>
+                        <p class="text-success"><small>www.belarusguide.com</small></p>
+                        <p>the Great Prince of the Grand Duchy of Lithuania he had stopped the invasion to Europe
+                            of Timur (Tamerlan) from Asia heading a big Army of Belarusians, Lithuanians.</p>
+                    </section>
+                    <section class="search-result">
+                        <h4>The origins of the Grand Duchy of Litva</h4>
+                        <p class="text-success"><small>www.belarusguide.com</small></p>
+                        <p>Who are the Belarusians, anyway? What is this strange country - Belarus - which appeared
+                            on the map a few years ago, a country that used to be called Belorussia, Byelorussia or even White Russia?</p>
+                    </section>
+                    <div class="text-align-center">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#">Prev</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 </div>
