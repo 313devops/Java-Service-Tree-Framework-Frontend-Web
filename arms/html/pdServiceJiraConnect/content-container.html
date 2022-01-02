@@ -1,0 +1,213 @@
+<div class="col-lg-4">
+    <section class="widget">
+        <header>
+            <h4>
+                <span class="font13" style="font-weight: bold;">
+                    <i class="fa fa-sort-amount-asc"></i> 제품(서비스) 조회
+                </span>
+            </h4>
+            <div class="actions">
+                <button class="btn btn-transparent btn-xs" onclick="$('#demo').jstree('open_all');">Show All
+                    <i class="fa fa-arrow-down"></i>
+                </button>
+            </div>
+        </header>
+        <div class="body">
+            <div class="wrapper">
+                <div id="mmenu" style="padding-bottom: 5px;">
+                    <form class="form-search no-margin" role="form">
+                        <div class="input-group">
+                            <input type="search" id="text" class="form-control searchDarkBack" style="color: #f8f8f8;" placeholder="찾을 노드 이름 입력" data-tooltip="Press Enter To Node To Search">
+                            <span class="input-group-btn">
+                                <button type="button" id="search" title="Search" class="btn btn-default btn-sm">
+                                    Search
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div id="demo" style="padding-top: 5px;" class="darkBack"></div>
+                <div style="margin-top: 10px;" class="darkBack">
+                    설명
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="col-lg-8">
+    <section class="widget">
+        <header>
+            <h4>
+                <span class="font13" style="font-weight: bold;">
+                    <i class="fa fa-edit"></i> 연결할 Jira 선택
+                </span>
+            </h4>
+            <div class="widget-controls">
+                <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                <a data-widgster="collapse" title="Collapse" href="#"><i
+                        class="glyphicon glyphicon-chevron-down"></i></a>
+                <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+            </div>
+        </header>
+        <div class="body">
+            <div class="box box-primary" style="border-top-color: #bbbbbb; border-top-width: 0px; margin-bottom: 35px !important;">
+                <div class="row">
+                    <div class="col-xs-5">
+                        Available Jira
+                        <select name="from" id="lstview" class="form-control darkBack font13" size="13" multiple="multiple" style="color: #f8f8f8;">
+                            <option value="HTML">HTML</option>
+                            <option value="2">CSS</option>
+                            <option value="CSS">CSS3</option>
+                            <option value="jQuery">jQuery</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Bootstrap">Bootstrap</option>
+                            <option value="MySQL">MySQL</option>
+                            <option value="PHP">PHP</option>
+                            <option value="JSP">JSP</option>
+                            <option value="Rubi on Rails">Rubi on Rails</option>
+                            <option value="SQL">SQL</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="Bootstrap">Bootstrap</option>
+                            <option value="MySQL">MySQL</option>
+                            <option value="PHP">PHP</option>
+                            <option value="JSP">JSP</option>
+                            <option value="Rubi on Rails">Rubi on Rails</option>
+                            <option value="SQL">SQL</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-2">
+                        Action
+                        <button type="button" id="lstview_undo" class="btn btn-danger btn-block">undo</button>
+                        <button type="button" id="lstview_rightAll" class="btn btn-default btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                        <button type="button" id="lstview_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                        <button type="button" id="lstview_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                        <button type="button" id="lstview_leftAll" class="btn btn-default btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                        <button type="button" id="lstview_redo" class="btn btn-warning btn-block">redo</button>
+                    </div>
+
+                    <div class="col-xs-5">
+                        Selected Jira
+                        <select name="to" id="lstview_to" class="form-control darkBack font13" size="13" multiple="multiple" style="color: #f8f8f8; width: 100% !important;"></select>
+                    </div>
+                </div>
+
+                <p class="pull-right" style="padding-top: 10px;"><a class="btn btn-info" id="show-info-message" href="#">제품(서비스) Jira 연결 등록</a></p>
+                <p class="pull-right" style="padding-top: 10px; padding-right: 10px;">
+                    <button type="button" class="btn btn-success" id="jiraJqlTest"
+                            data-toggle="modal" data-target="#myModal2">제품(서비스) Jira 연결 체크</button>
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+                            <div style="margin-top: 10px;" class="darkBack">
+                                                설명
+                                            </div>
+                        </div>
+    </section>
+</div>
+
+<script type="text/javascript" src='../../../reference/jquery-plugins/multiselect.js' charset="utf-8"></script>
+<script type="text/javascript" src='js/pdServiceJiraConnect.js' charset="utf-8"></script>
+<!-- page specific application css/js -->
+<style type="text/css">
+
+.btn-transparent.active {
+    color: white;
+    background: rgba(51, 51, 51, 0.55);
+    color: #ffffff;
+    background-color: #e5603b;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+.btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+/***********************************/
+/**          SEARCH              **/
+/**********************************/
+.search-result {
+  padding: 5px 15px 5px 10px;
+  margin-bottom: 10px;
+}
+.search-result h4 {
+  margin: 0;
+}
+.search-result:nth-child(even) {
+  border-left: 5px solid #585858;
+  background: rgba(51, 51, 51, 0.55);
+}
+.search-result:nth-child(odd) {
+  border-left: 5px solid #919191;
+}
+.search-result:hover {
+  cursor: pointer;
+  padding-left: 10px;
+  border-left-color: #e5603b;
+  -webkit-transition: border-left-color 0.2s;
+  -moz-transition: border-left-color 0.2s;
+  -o-transition: border-left-color 0.2s;
+  transition: border-left-color 0.2s;
+}
+.search-result > p {
+  margin-bottom: 0px;
+}
+
+.slimScrollBar{
+background: rgba(0, 0, 0, 0.55) !important;
+}
+</style>
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+
+    // 초기 개발 및 확인 용도
+    $(function () {
+
+        $('#lstview').multiselect();
+
+        $("#lstview").slimscroll({
+            height: '100%',
+            alwaysVisible: true,
+            railVisible: true
+        });
+
+        $("#lstview").css("width","100%");
+
+        $("#lstview_to").slimscroll({
+            height: '100%',
+            alwaysVisible: true,
+            railVisible: true
+        });
+
+        $("#lstview_to").css("width","100%");
+
+    });
+
+    $( "#jiraJqlTest" ).click(function() {
+
+        $.post( "/auth-user/api/arms/pdServiceJira/getTestConnectionJira.do", {
+            Name: 'ajax',
+            Age: '10'
+        }, function(jqXHR) {
+            alert( "success" );
+        }, 'json' /* xml, text, script, html */)
+        .done(function(jqXHR) {
+            alert( "second success" );
+        })
+        .fail(function(jqXHR) {
+            alert( "error" );
+        })
+        .always(function(jqXHR) {
+            alert( "finished" );
+        });
+    });
+
+    //]]>
+</script>
